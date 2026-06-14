@@ -1,0 +1,206 @@
+/* ================================================================
+   Shared poll card (`.quorum--workplace-card`).
+
+   ONE source for the card look in both the workplace AND the course
+   tab — so the tiles look identical in both contexts, are laid out
+   the same way and behave the same. Loaded globally per app
+   (workplace-app/main.js, course-app/App.vue); all classes are
+   `quorum--`-prefixed, so there is no conflict with Stud.IP.
+   ================================================================ */
+
+.quorum--workplace-card {
+    --quorum-acc: var(--quorum-petrol);
+    background: color-mix(in srgb, var(--quorum-acc) 7%, var(--quorum-bg));
+    border: 1px solid var(--quorum-border);
+    border-inline-start: 8px solid var(--quorum-acc);
+    border-radius: var(--quorum-radius);
+    padding: var(--quorum-space-md);
+    box-shadow: 0 1px 4px color-mix(in srgb, var(--quorum-acc) 18%, transparent);
+    display: flex;
+    flex-direction: column;
+    gap: var(--quorum-space-sm);
+    min-block-size: 152px;
+    /* Anchor for the stretched link (the whole card opens the detail page). */
+    position: relative;
+}
+
+/* Clicking the card opens results/collection: the title link stretches via
+   ::after across the whole card; footer/menu sit above it with a higher z-index
+   and stay independently clickable. The title is NOT a visible link. */
+.quorum--card-open {
+    color: inherit;
+    text-decoration: none;
+
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        border-radius: inherit;
+    }
+    &:focus-visible { outline: 2px solid var(--quorum-acc); outline-offset: 2px; }
+}
+.quorum--workplace-card-footer { position: relative; z-index: 2; }
+/* Desaturate paused and archived cards — a status cue without an aurora shout */
+.quorum--workplace-card.is-paused,
+.quorum--workplace-card.is-archived {
+    --quorum-acc: var(--quorum-muted);
+    background: var(--quorum-bg);
+    box-shadow: none;
+}
+
+.quorum--workplace-card-head {
+    /* The bubble is pinned top-right (see below) so the status/type pills
+       ALWAYS sit at the same top-left and the bubble is never "offset" against
+       a wrapped pill row. The pills wrap consistently to the left, the bubble
+       stays in place. */
+    position: relative;
+    min-block-size: 2rem;
+    padding-inline-end: 2.75rem;
+}
+
+.quorum--workplace-head-tags {
+    display: flex;
+    align-items: center;
+    gap: var(--quorum-space-xs);
+    flex-wrap: wrap;
+    min-inline-size: 0;
+}
+
+.quorum--workplace-type {
+    font-size: var(--quorum-text-sm);
+    font-weight: 600;
+    padding: var(--quorum-space-xs) var(--quorum-space-sm);
+    border-radius: 999px;
+    color: var(--quorum-muted);
+    border: 1px solid color-mix(in srgb, var(--quorum-muted) 35%, transparent);
+    white-space: nowrap;
+}
+
+.quorum--workplace-quiz {
+    font-size: var(--quorum-text-sm);
+    font-weight: 700;
+    padding: var(--quorum-space-xs) var(--quorum-space-sm);
+    border-radius: 999px;
+    color: var(--quorum-fg);
+    background: color-mix(in srgb, var(--quorum-acc) 18%, transparent);
+    white-space: nowrap;
+}
+
+.quorum--workplace-status {
+    font-size: var(--quorum-text-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: var(--quorum-space-xs) var(--quorum-space-sm);
+    border-radius: 999px;
+    /* Dark text (CD black) on the accent tint instead of accent text on the
+       accent tint — the latter missed WCAG-AA (e.g. "Running" 2.28:1). The
+       accent color is carried by the pill background. */
+    color: var(--quorum-fg);
+    background: color-mix(in srgb, var(--quorum-acc) 18%, transparent);
+
+    &[data-status='paused']   { color: var(--quorum-muted); background: transparent; }
+    &[data-status='archived'] {
+        color: var(--quorum-muted);
+        background: color-mix(in srgb, var(--quorum-muted) 10%, transparent);
+    }
+}
+
+.quorum--workplace-bubble {
+    /* Pinned top-right in the head — consistent placement regardless of how
+       many pills wrap on the left. */
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-end: 0;
+    /* Darken the accent base for sure (towards text black) so white text reaches
+       WCAG-AA even on light palette members (e.g. green #6ead10) — the hue/
+       identity is preserved. */
+    background: color-mix(in srgb, var(--quorum-acc) 60%, var(--quorum-fg));
+    color: var(--quorum-accent-contrast);
+    min-inline-size: 2rem;
+    block-size: 2rem;
+    padding: 0 0.55rem;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.quorum--workplace-card-question {
+    white-space: pre-line;
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.35;
+    color: var(--quorum-fg);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.quorum--workplace-card-seminar { margin: 0; font-size: 0.85rem; color: var(--quorum-muted); }
+.quorum--workplace-card-count { margin: 0; font-size: 0.85rem; font-weight: 600; color: var(--quorum-fg); }
+.quorum--workplace-seminar-label {
+    font-weight: 600; color: var(--quorum-fg); margin-inline-end: 0.25rem;
+}
+.quorum--workplace-card-chain {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--quorum-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+.quorum--workplace-card-roundlive {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--quorum-success, #008512);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.quorum--workplace-card-footer {
+    margin-block-start: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding-block-start: 0.4rem;
+}
+.quorum--workplace-card-link {
+    /* Links = brand blue (Stud.IP CD), not the decorative card accent.
+       (Petrol as a link also missed WCAG-AA at 4.31:1.) */
+    color: var(--quorum-link);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-block: 0.1rem;
+
+    &:hover, &:focus-visible {
+        color: var(--quorum-link-visited);
+    }
+}
+.quorum--workplace-card-link-placeholder { display: inline-block; }
+
+@media (prefers-reduced-motion: reduce) {
+    .quorum--workplace-card-link { transition: none; }
+}
+
+@media (prefers-contrast: more), (forced-colors: active) {
+    .quorum--workplace-card {
+        background: var(--quorum-bg);
+        border-inline-start-color: CanvasText;
+        box-shadow: none;
+    }
+    .quorum--workplace-bubble { background: CanvasText; color: Canvas; }
+    .quorum--workplace-status {
+        color: CanvasText;
+        background: transparent;
+        border: 1px solid CanvasText;
+    }
+}

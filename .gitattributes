@@ -1,0 +1,9 @@
+# Built Vue bundles (Vite output under public/). These are generated artifacts,
+# shipped in the repo because Stud.IP installs the plugin without a build step.
+# Mark them as generated so GitHub's language stats ignore them and diffs
+# collapse them.
+public/assets/** linguist-generated=true
+public/.vite/** linguist-generated=true
+
+# Compiled gettext catalog is binary.
+locale/**/*.mo binary

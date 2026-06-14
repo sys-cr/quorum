@@ -1,0 +1,36 @@
+{
+    "name": "quorum",
+    "version": "1.0.0",
+    "private": true,
+    "description": "Quorum — Audience Response System für Stud.IP 6 (Frontend)",
+    "type": "module",
+    "scripts": {
+        "dev": "vite build --mode development --watch",
+        "build": "vite build --mode production"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "^5.2.4",
+        "sass": "^1.77.6",
+        "vite": "^6.4.3"
+    },
+    "browserslist": [
+        "last 2 versions",
+        "android>=9",
+        "safari>=14",
+        "not dead"
+    ],
+    "dependencies": {
+        "focus-trap-vue": "^4.1.0",
+        "pinia": "^2.2.0",
+        "qrcode.vue": "^3.9.0",
+        "vue": "^3.4.31",
+        "vue-i18n": "^9.14.5",
+        "vue-router": "^4.6.4",
+        "vue3-gettext": "^4.0.0-beta.1",
+        "wordcloud": "^1.2.3"
+    },
+    "overrides": {
+        "esbuild": "^0.25.0",
+        "uuid": "^11.1.1"
+    }
+}

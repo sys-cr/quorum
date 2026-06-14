@@ -1,0 +1,589 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Quorum 1.0.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+
+msgid "Im Reiter „Quorum\" verwalten Sie die Live-Abstimmungen dieser Veranstaltung: anlegen, starten, Ergebnisse in Echtzeit verfolgen und Runden vergleichen (Peer Instruction)."
+msgstr "In the \"Quorum\" tab you manage the live polls of this course: create and start polls, follow the results in real time and compare rounds (peer instruction)."
+
+msgid "Studierende stimmen anonym per QR-Code oder Kurz-URL ab — ohne eigenes Login. Die Präsentationsansicht zeigt Frage, QR-Code und Ergebnisse groß auf dem Beamer."
+msgstr "Students vote anonymously via QR code or short URL — no login required. The presentation view shows the question, QR code and results in large format on the projector."
+
+msgid "Am Arbeitsplatz verwalten Sie kursunabhängige Abstimmungen und Sammlungen — etwa für Gastvorlesungen oder als wiederverwendbare Vorlagen. Optional binden Sie eine Abstimmung an eine Veranstaltung."
+msgstr "On your workplace you manage course-independent polls and collections — e.g. for guest lectures or as reusable templates. Optionally, you can bind a poll to a course."
+
+msgid "Sie können Umfragen anlegen, importieren, herunterladen und in Sammlungen bündeln. Studierende stimmen anonym per QR-Code ab."
+msgstr "You can create, import, download and bundle polls into collections. Students vote anonymously via QR code."
+
+msgid "Quorum ist ein Audience-Response-System: Lehrende stellen in Sekunden eine Live-Abstimmung, Studierende antworten anonym per QR-Code vom Smartphone."
+msgstr "Quorum is an audience response system: lecturers launch a live poll in seconds, students answer anonymously from their smartphones via QR code."
+
+msgid "Hier binden Sie eine Ihrer vorhandenen Umfragen in diese Veranstaltung ein: Die gewählte Umfrage wird mit der Veranstaltung verknüpft und erscheint danach im Reiter „Quorum\"."
+msgstr "Here you embed one of your existing polls into this course: the selected poll is linked to the course and then appears in the \"Quorum\" tab."
+
+msgid "Hier legen Sie eine neue Umfrage an: Frage und Fragetyp wählen (Multiple Choice, Skala, Emoji, Freitext, Matrix), Antwortoptionen eintragen und optional ein Zeitlimit setzen."
+msgstr "Here you create a new poll: choose the question and its type (multiple choice, scale, emoji, free text, matrix), enter the answer options and optionally set a time limit."
+
+msgid "Bei „Multiple Choice (eine Antwort)\" lässt sich der Quiz-Modus mit Punkten und Leaderboard aktivieren. Optional binden Sie die Umfrage an eine Veranstaltung; gestartet wird sie danach aus der Übersicht."
+msgstr "For \"Multiple Choice (one answer)\" you can enable quiz mode with points and a leaderboard. Optionally bind the poll to a course; you then start it from the overview."
+
+msgid "Hier ändern Sie Fragetext und Antwortoptionen. Sobald die erste Antwort eingegangen ist, sind die Optionen gesperrt — Fragetext und Veranstaltungs-Bindung bleiben aber weiterhin änderbar."
+msgstr "Here you change the question and answer options. Once the first response has arrived, the options are locked — but the question text and course binding stay editable."
+
+msgid "Im Archiv liegen Ihre archivierten Umfragen und Sammlungen — auch geladene Demo-Inhalte landen hier. Sie können Einträge reaktivieren, ihre Ergebnisse erneut ansehen, herunterladen oder endgültig löschen."
+msgstr "The archive holds your archived polls and collections — loaded demo content ends up here too. You can reactivate entries, review their results again, download them or delete them for good."
+
+msgid "Diese Seite zeigt die Ergebnisse als Tabelle — Stimmen je Option, die Liste der Freitext-Antworten oder die Matrix-Auswertung. Das Ergebnis können Sie als CSV oder PDF herunterladen."
+msgstr "This page shows the results as a table — votes per option, the list of free-text answers or the matrix evaluation. You can download the result as CSV or PDF."
+
+msgid "Bei Freitext-Fragen entfernen Sie einzelne unpassende Antworten direkt hier; sie verschwinden dann auch aus der Ergebnisanzeige auf dem Beamer."
+msgstr "For free-text questions you can remove individual unsuitable answers right here; they then also disappear from the results shown on the projector."
+
+msgid "Hier laden Sie Beispiel-Inhalte in Ihr Archiv: je eine Umfrage pro Fragetyp und eine Demo-Sammlung, alle bereits mit Antworten. Zum Ausprobieren — reaktivieren, kopieren oder als Vorlage umbauen."
+msgstr "Here you load sample content into your archive: one poll per question type plus a demo collection, all with responses already. Great for trying things out — reactivate, copy or rework as a template."
+
+msgid "Hier starten Sie dieselbe Frage als neue Runde — die bisherigen Ergebnisse bleiben erhalten. So lassen Sie z. B. nach einer Diskussionsphase erneut abstimmen und vergleichen die Runden anschließend (Peer Instruction)."
+msgstr "Here you start the same question as a new round — the previous results are kept. This lets you vote again after a discussion phase, for example, and compare the rounds afterwards (peer instruction)."
+
+msgid "Hier laden Sie eine zuvor heruntergeladene Quorum-Definitionsdatei (.json) hoch. Die Umfrage wird neu angelegt und startet ohne bereits abgegebene Antworten."
+msgstr "Here you upload a previously downloaded Quorum definition file (.json). The poll is created from scratch and starts without any responses."
+
+msgid "Hier importieren Sie eine komplette Sammlung aus einer Definitionsdatei (.json) — alle enthaltenen Umfragen werden neu angelegt."
+msgstr "Here you import a complete collection from a definition file (.json) — all contained polls are created from scratch."
+
+msgid "Sammlungen bündeln mehrere Umfragen, z. B. für eine Vorlesungssitzung. Aus einer Sammlung heraus starten Sie den Presenter-Modus, der die Fragen nacheinander auf dem Beamer zeigt."
+msgstr "Collections bundle several polls, e.g. for one lecture session. From a collection you start the presenter mode, which shows the questions one after another on the projector."
+
+msgid "Diese Ansicht zeigt die Umfragen einer Sammlung: Reihenfolge ändern, neue Umfragen direkt hier anlegen oder bestehende hinzufügen und entfernen."
+msgstr "This view shows the polls of a collection: change the order, create new polls right here or add and remove existing ones."
+
+msgid "Das Voting starten Sie für alle Fragen zugleich (Studierende klicken sich selbst durch) oder Frage für Frage über den Presenter-Modus."
+msgstr "You start the voting either for all questions at once (students click through on their own) or one question at a time via presenter mode."
+
+msgid "Hier legen Sie eine neue Sammlung an. Der Name erscheint später als Titel im Presenter-Modus."
+msgstr "Here you create a new collection. Its name will later appear as the title in presenter mode."
+
+msgid "Hier benennen Sie die Sammlung um. Der Name erscheint als Titel im Presenter-Modus."
+msgstr "Here you rename the collection. Its name appears as the title in presenter mode."
+
+msgid "Hier wählen Sie, in welche Sammlung diese Umfrage aufgenommen werden soll."
+msgstr "Here you choose which collection this poll should be added to."
+
+msgid "Der Vergleich stellt die Runden einer Frage nebeneinander — so sehen Sie, wie sich die Antworten z. B. nach einer Diskussionsphase verändert haben (Peer Instruction)."
+msgstr "The comparison shows the rounds of a question side by side — so you can see how the answers changed, e.g. after a discussion phase (peer instruction)."
+
+msgid "Quorum wurde von %s entwickelt und steht unter der GNU GPLv3 mit Zusatzbedingungen gemäß Abschnitt 7. Der Quellcode ist öffentlich zugänglich."
+msgstr "Quorum was developed by %s and is licensed under the GNU GPLv3 with additional terms pursuant to section 7. The source code is publicly available."
+
+msgid "Über Quorum"
+msgstr "About Quorum"
+
+msgid "Lizenz (GPLv3)"
+msgstr "License (GPLv3)"
+
+msgid "Quellcode (GitHub)"
+msgstr "Source code (GitHub)"
+
+# --- Plugin UI strings (controllers/views) ---
+
+msgid "%d Umfragen"
+msgstr "%d polls"
+
+msgid "Abstimmungs-Vergleich"
+msgstr "Poll comparison"
+
+msgid "Aktive Umfragen"
+msgstr "Active polls"
+
+msgid "Anmeldung erforderlich."
+msgstr "Login required."
+
+msgid "Antwort-Optionen"
+msgstr "Answer options"
+
+msgid "Antwort-Optionen sind gesperrt, weil bereits Antworten eingegangen sind. Frage-Text und Veranstaltungs-Bindung können weiter geändert werden."
+msgstr "The answer options are locked because responses have already been submitted. The question text and course binding can still be changed."
+
+msgid "Antwort-Text"
+msgstr "Answer text"
+
+msgid "Antworten"
+msgstr "Responses"
+
+msgid "Aus Archiv holen"
+msgstr "Restore from archive"
+
+msgid "Beschreibung (optional)"
+msgstr "Description (optional)"
+
+msgid "Bisherige Antworten: %d"
+msgstr "Responses so far: %d"
+
+msgid "Bisherige Zuordnung"
+msgstr "Current assignment"
+
+msgid "Bitte wählen Sie eine Quorum-Definitionsdatei (.json) zum Hochladen."
+msgstr "Please select a Quorum definition file (.json) to upload."
+
+msgid "Bitte wählen Sie einen Modus (Vergleichen oder Duplizieren)."
+msgstr "Please choose a mode (compare or duplicate)."
+
+msgid "Definitionsdatei (.json)"
+msgstr "Definition file (.json)"
+
+msgid "Der Datei-Upload ist ungültig."
+msgstr "The file upload is invalid."
+
+msgid "Die Datei ist zu groß für eine Quorum-Definition."
+msgstr "The file is too large for a Quorum definition."
+
+msgid "Die Datei konnte nicht importiert werden (ungültiges Format)."
+msgstr "The file could not be imported (invalid format)."
+
+msgid "Die Sammlung konnte nicht importiert werden (ungültiges Format)."
+msgstr "The collection could not be imported (invalid format)."
+
+msgid "Die Umfrage gehört zu keiner Sammlung — erscheint im Workplace unter „Aktive Umfragen\"."
+msgstr "The poll does not belong to any collection — it appears in the workplace under \"Active polls\"."
+
+msgid "Diese Abstimmung existiert nicht."
+msgstr "This poll does not exist."
+
+msgid "Diese Sammlung ist leer."
+msgstr "This collection is empty."
+
+msgid "Diese Veranstaltung wird automatisch verknüpft, weil Sie den Quorum-Tab dieser Veranstaltung geöffnet haben."
+msgstr "This course is linked automatically because you opened the Quorum tab of this course."
+
+msgid "Eigene Umfragen außerhalb dieses Kurses"
+msgstr "Your polls outside this course"
+
+msgid "Einbinden"
+msgstr "Embed"
+
+msgid "Eine Sammlung ist eine geordnete Liste von Umfragen, die Sie im Presenter-Modus nacheinander durchspielen können."
+msgstr "A collection is an ordered list of polls that you can run one after another in presenter mode."
+
+msgid "Eins nach oben"
+msgstr "Move up one"
+
+msgid "Eins nach unten"
+msgstr "Move down one"
+
+msgid "Emoji-Reaktion"
+msgstr "Emoji reaction"
+
+msgid "Emoji-Zeichen als Antwort-Option eintragen (z. B. 😀, 😐, 😕)."
+msgstr "Enter emoji characters as answer options (e.g. 😀, 😐, 😕)."
+
+msgid "Erneut starten"
+msgstr "Start again"
+
+msgid "Frage und Antwort-Optionen"
+msgstr "Question and answer options"
+
+msgid "Frage und Fragetyp"
+msgstr "Question and question type"
+
+msgid "Frage, Optionen und Veranstaltungs-Bindung können geändert werden, solange noch keine Antworten eingegangen sind."
+msgstr "The question, options and course binding can be changed as long as no responses have been submitted yet."
+
+msgid "Fragetyp"
+msgstr "Question type"
+
+msgid "Freitext (offene Antwort)"
+msgstr "Free text (open answer)"
+
+msgid "Im Presenter-Modus starten"
+msgstr "Start in presenter mode"
+
+msgid "Im Workplace-Index können Sie über das Aktionsmenü einer Umfrage „Zu Sammlung hinzufügen\" wählen."
+msgstr "In the workplace index you can choose \"Add to collection\" from a poll's action menu."
+
+msgid "Keine Sammlung (freistehend)"
+msgstr "No collection (standalone)"
+
+msgid "Leer lassen für eine kursunabhängige Umfrage. Suchbereich = oben gewähltes Semester (Standard: laufendes; z. B. kommendes Semester wählbar)."
+msgstr "Leave empty for a course-independent poll. Search scope = the semester selected above (default: current; e.g. you can select the upcoming semester)."
+
+msgid "Läuft"
+msgstr "Running"
+
+msgid "Meine Quorum-Umfragen"
+msgstr "My Quorum polls"
+
+msgid "Mindestens zwei Optionen — leere Felder werden ignoriert."
+msgstr "At least two options — empty fields are ignored."
+
+msgid "Modus wählen"
+msgstr "Choose mode"
+
+msgid "Multiple Choice (Mehrfachauswahl)"
+msgstr "Multiple choice (multiple answers)"
+
+msgid "Multiple Choice (eine Antwort)"
+msgstr "Multiple choice (single answer)"
+
+msgid "Nach Ablauf stoppt der Server die Abstimmung automatisch und lehnt verspätete Antworten ab. Leer oder 0 = kein Limit."
+msgstr "After it expires, the server stops the poll automatically and rejects late responses. Empty or 0 = no limit."
+
+msgid "Neue Quorum-Umfrage anlegen"
+msgstr "Create a new Quorum poll"
+
+msgid "Neue Runde gehört zur selben Vergleichs-Kette. Antworten der ersten Runde bleiben separat erhalten und können später nebeneinander angezeigt werden."
+msgstr "The new round belongs to the same comparison chain. The first round's responses are kept separately and can later be shown side by side."
+
+msgid "Neue Sammlung anlegen"
+msgstr "Create a new collection"
+
+msgid "Neue Umfrage anlegen"
+msgstr "Create a new poll"
+
+msgid "Neue Umfrage mit denselben Inhalten, aber eigenständig. Kein Bezug zur ursprünglichen Runde."
+msgstr "A new poll with the same content, but standalone. No relation to the original round."
+
+msgid "Option"
+msgstr "Option"
+
+msgid "Option %d"
+msgstr "Option %d"
+
+msgid "Option 3 (optional)"
+msgstr "Option 3 (optional)"
+
+msgid "Option 4 (optional)"
+msgstr "Option 4 (optional)"
+
+msgid "POST erforderlich."
+msgstr "POST required."
+
+msgid "Pausiert"
+msgstr "Paused"
+
+msgid "Multiple Choice"
+msgstr "Multiple choice"
+
+msgid "Mehrfachauswahl"
+msgstr "Multiple select"
+
+msgid "Skala"
+msgstr "Scale"
+
+msgid "Emoji"
+msgstr "Emoji"
+
+msgid "Freitext"
+msgstr "Free text"
+
+msgid "Matrix"
+msgstr "Matrix"
+
+msgid "Presenter-Modus"
+msgstr "Presenter mode"
+
+msgid "Präsentieren"
+msgstr "Present"
+
+msgid "Quorum"
+msgstr "Quorum"
+
+msgid "Quorum — Abstimmung"
+msgstr "Quorum — Poll"
+
+msgid "Reihenfolge gespeichert."
+msgstr "Order saved."
+
+msgid "Reihenfolge speichern"
+msgstr "Save order"
+
+msgid "Sammlung aktualisiert."
+msgstr "Collection updated."
+
+msgid "Sammlung angelegt."
+msgstr "Collection created."
+
+msgid "Sammlung anlegen"
+msgstr "Create collection"
+
+msgid "Sammlung archivieren"
+msgstr "Archive collection"
+
+msgid "Sammlung archiviert."
+msgstr "Collection archived."
+
+msgid "Sammlung aus dem Archiv geholt."
+msgstr "Collection restored from archive."
+
+msgid "Sammlung bearbeiten"
+msgstr "Edit collection"
+
+msgid "Sammlung endgültig gelöscht. Mitglieds-Umfragen bleiben erhalten."
+msgstr "Collection permanently deleted. Member polls are kept."
+
+msgid "Sammlung endgültig löschen? Mitglieds-Umfragen bleiben erhalten."
+msgstr "Permanently delete collection? Member polls are kept."
+
+msgid "Sammlung importieren"
+msgstr "Import collection"
+
+msgid "Sammlung importieren …"
+msgstr "Import collection …"
+
+msgid "Sammlung importiert."
+msgstr "Collection imported."
+
+msgid "Sammlung löschen"
+msgstr "Delete collection"
+
+msgid "Sammlung nicht gefunden."
+msgstr "Collection not found."
+
+msgid "Sammlung wählen"
+msgstr "Choose collection"
+
+msgid "Sammlungen"
+msgstr "Collections"
+
+msgid "Sammlungs-Datei (.json)"
+msgstr "Collection file (.json)"
+
+msgid "Semester (Suchbereich)"
+msgstr "Semester (search scope)"
+
+msgid "Sie benötigen Tutor-Rechte in dieser Veranstaltung."
+msgstr "You need tutor rights in this course."
+
+msgid "Sie haben keine Berechtigung für diese Veranstaltung."
+msgstr "You do not have permission for this course."
+
+msgid "Sie haben keine Berechtigung, den Quorum-Arbeitsplatz zu öffnen."
+msgstr "You do not have permission to open the Quorum workplace."
+
+msgid "Sie haben noch keine Sammlungen angelegt. Über „Sammlungen\" in der Sidebar legen Sie eine an."
+msgstr "You have not created any collections yet. Create one via \"Collections\" in the sidebar."
+
+msgid "Skala (Likert)"
+msgstr "Scale (Likert)"
+
+msgid "Stellen Sie eine Frage und wählen Sie den Fragetyp. Die Umfrage startet sofort und ist über die Workplace-Übersicht steuerbar."
+msgstr "Ask a question and choose the question type. The poll starts immediately and can be controlled from the workplace overview."
+
+msgid "Stimmen"
+msgstr "Votes"
+
+msgid "Umfrage aktualisiert."
+msgstr "Poll updated."
+
+msgid "Umfrage angelegt."
+msgstr "Poll created."
+
+msgid "Umfrage anlegen"
+msgstr "Create poll"
+
+msgid "Umfrage aus Sammlung entfernt."
+msgstr "Poll removed from collection."
+
+msgid "Umfrage bearbeiten"
+msgstr "Edit poll"
+
+msgid "Umfrage einbinden"
+msgstr "Embed poll"
+
+msgid "Umfrage einbinden …"
+msgstr "Embed poll …"
+
+msgid "Umfrage erneut gestartet."
+msgstr "Poll started again."
+
+msgid "Umfrage erneut starten"
+msgstr "Start poll again"
+
+msgid "Umfrage importieren"
+msgstr "Import poll"
+
+msgid "Umfrage importieren …"
+msgstr "Import poll …"
+
+msgid "Umfrage importiert."
+msgstr "Poll imported."
+
+msgid "Umfrage wurde in diesen Kurs übernommen."
+msgstr "The poll has been added to this course."
+
+msgid "Umfrage zur Sammlung hinzugefügt."
+msgstr "Poll added to collection."
+
+msgid "Umfragen in dieser Sammlung (%d)"
+msgstr "Polls in this collection (%d)"
+
+msgid "Veranstaltung verknüpfen (optional)"
+msgstr "Link course (optional)"
+
+msgid "Was war heute der wichtigste Begriff …?"
+msgstr "What was today's most important concept …?"
+
+msgid "Zeitlimit in Minuten (optional)"
+msgstr "Time limit in minutes (optional)"
+
+msgid "Zu Sammlung hinzufügen"
+msgstr "Add to collection"
+
+msgid "kursunabhängig"
+msgstr "course-independent"
+
+msgid "z. B. 5 – leer = kein Limit"
+msgstr "e.g. 5 – empty = no limit"
+
+msgid "z. B. „Vorlesung 3 — Zellbiologie\""
+msgstr "e.g. \"Lecture 3 — Cell biology\""
+
+msgid "Im Presenter-Modus öffnen"
+msgstr "Open in presenter mode"
+
+msgid "Voting beenden"
+msgstr "Stop voting"
+
+msgid "Voting starten — alle Fragen"
+msgstr "Start voting — all questions"
+
+msgid "Voting starten — Frage für Frage"
+msgstr "Start voting — question by question"
+
+msgid "Voting gestartet — alle Fragen laufen."
+msgstr "Voting started — all questions are running."
+
+msgid "Voting gestartet — Frage 1 läuft. Im Presenter schalten Sie zur nächsten Frage weiter."
+msgstr "Voting started — question 1 is running. Use the presenter to advance to the next question."
+
+msgid "Voting beendet — alle Fragen der Sammlung sind gestoppt."
+msgstr "Voting stopped — all questions in this collection are stopped."
+
+# --- Plugin UI strings (concatenated/multiline calls) ---
+
+msgid "Es gibt keine weiteren eigenen Umfragen, die Sie in diesen Kurs einbinden könnten. Legen Sie über „Neue Umfrage anlegen\" eine neue an."
+msgstr "There are no further polls of your own that you could embed into this course. Create a new one via \"Create a new poll\"."
+
+msgid "Laden Sie eine Quorum-Definitionsdatei (.json) hoch, die zuvor über „Herunterladen\" exportiert wurde. Die Umfrage wird frisch angelegt — ohne Antworten."
+msgstr "Upload a Quorum definition file (.json) that was previously exported via \"Download\". The poll is created from scratch — without any responses."
+
+msgid "Laden Sie eine Quorum-Sammlungs-Definition (.json) hoch, die zuvor über „Herunterladen\" exportiert wurde. Die Sammlung und alle enthaltenen Umfragen werden frisch angelegt — ohne Antworten, in der gespeicherten Reihenfolge."
+msgstr "Upload a Quorum collection definition (.json) that was previously exported via \"Download\". The collection and all contained polls are created from scratch — without any responses, in the saved order."
+
+msgid "Wählen Sie eine Ihrer Umfragen, um sie in diesen Kurs zu übernehmen. Eine bereits einem anderen Kurs zugeordnete Umfrage wird dabei in diesen Kurs verschoben."
+msgstr "Choose one of your polls to add it to this course. A poll already assigned to another course will be moved into this course."
+
+msgid "Sammlung"
+msgstr "Collection"
+
+msgid "Umfrage angelegt und zur Sammlung hinzugefügt."
+msgstr "Survey created and added to the collection."
+
+msgid "Umfrage angelegt — die Sammlung wurde jedoch nicht gefunden."
+msgstr "Survey created — but the collection could not be found."
+
+# --- Demo content (load_demo) ---
+
+msgid "Demo-Inhalte laden"
+msgstr "Load demo content"
+
+msgid "Die Demo-Inhalte konnten nicht geladen werden."
+msgstr "The demo content could not be loaded."
+
+msgid "Die Demo-Inhalte wurden bereits geladen — Sie finden sie im Archiv."
+msgstr "The demo content has already been loaded — you can find it in the archive."
+
+msgid "%d Demo-Umfragen und eine Demo-Sammlung wurden in Ihr Archiv geladen."
+msgstr "%d demo polls and one demo collection were loaded into your archive."
+
+msgid "Quorum legt Ihnen Beispiel-Inhalte in Ihr Archiv — je eine Umfrage pro Fragetyp (Multiple Choice, Skala, Emoji, Freitext, Matrix) sowie eine Demo-Sammlung, alle bereits mit Beispiel-Antworten."
+msgstr "Quorum adds sample content to your archive — one poll per question type (multiple choice, scale, emoji, free text, matrix) plus a demo collection, all with sample responses already."
+
+msgid "So sehen Sie auf einen Blick, was Quorum kann, ohne selbst etwas anlegen zu müssen. Die Inhalte liegen im Archiv und lassen sich jederzeit reaktivieren, kopieren oder als Vorlage umbauen."
+msgstr "This lets you see at a glance what Quorum can do without having to create anything yourself. The content sits in the archive and can be reactivated, copied or adapted as a template at any time."
+
+msgid "Unbekanntes Export-Format — verfügbar sind CSV und PDF."
+msgstr "Unknown export format — available formats are CSV and PDF."
+
+msgid "Der Ergebnis-Export ist nur für Auswahl-Fragetypen (mc/scales/emoji) verfügbar."
+msgstr "Results export is only available for choice question types (mc/scales/emoji)."
+
+msgid "%d Stimmen · Stand: %s"
+msgstr "%d votes · as of %s"
+
+# --- Demo onboarding (Helpbar) ---
+
+msgid "Quorum ausprobieren"
+msgstr "Try Quorum"
+
+msgid "Laden Sie Beispiel-Inhalte (eine Umfrage je Fragetyp und eine Sammlung, mit Antworten) in Ihr Archiv — zum Anschauen, Reaktivieren und Umbauen."
+msgstr "Load sample content (one poll per question type and a collection, with responses) into your archive — to explore, reactivate and adapt."
+
+msgid "Antwort"
+msgstr "Answer"
+
+# --- Manual download ---
+
+msgid "Anleitung herunterladen"
+msgstr "Download the manual"
+
+# --- Quiz toggle (workplace/new) ---
+
+msgid "Richtige Antwort (Quiz)"
+msgstr "Correct answer (quiz)"
+
+msgid "Quiz-Modus"
+msgstr "Quiz mode"
+
+msgid "Quiz-Modus aktivieren (Punkte für richtige und schnelle Antworten, pseudonymes Leaderboard)"
+msgstr "Enable quiz mode (points for correct and fast answers, pseudonymous leaderboard)"
+
+msgid "Markieren Sie dafür oben mindestens eine Option als richtig. Teilnehmende nehmen nur mit frei gewähltem Spitznamen am Leaderboard teil (Opt-in)."
+msgstr "To do so, mark at least one option above as correct. Participants only join the leaderboard with a freely chosen nickname (opt-in)."
+
+msgid "In diesem Reiter sehen Sie die gerade laufenden Abstimmungen dieser Veranstaltung und können direkt teilnehmen — anonym, ohne dass Ihr Name gespeichert wird."
+msgstr "This tab shows the currently running polls of this course and lets you take part directly — anonymously, without your name being stored."
+
+msgid "Nach dem Ende einer Abstimmung sehen Sie hier die Ergebnisse, sofern die Lehrperson sie freigegeben hat."
+msgstr "Once a poll has ended, you see its results here, provided the lecturer has released them."
+
+msgid "Sichtbarkeit für Studierende"
+msgstr "Visibility for students"
+
+msgid "Ergebnisse für Studierende im Kurs-Reiter sichtbar"
+msgstr "Results visible to students in the course tab"
+
+msgid "Standardmäßig sehen Teilnehmende die Ergebnisse beendeter Umfragen im Quorum-Reiter. Abwählen, um sie zu verbergen. Die Teilnahme an laufenden Umfragen bleibt davon unberührt."
+msgstr "By default, participants see the results of finished polls in the Quorum tab. Uncheck to hide them. Participating in running polls is unaffected."
+
+msgid "Sie sind nicht Mitglied dieser Veranstaltung."
+msgstr "You are not a member of this course."
+
+msgid "Veranstaltung"
+msgstr "Course"
+
+msgid "Leer lassen für eine kursunabhängige Sammlung. Suchbereich = oben gewähltes Semester."
+msgstr "Leave empty for a course-independent collection. Search scope = the semester selected above."
+
+msgid "Im Reiter „Quorum\" verwalten Sie die Abstimmungen und Sammlungen dieser Veranstaltung vollständig: anlegen, starten und beenden, präsentieren, QR-Code teilen, Ergebnisse in Echtzeit verfolgen und Runden vergleichen (Peer Instruction). Über die Sidebar-Ansicht „Sammlungen\" bündeln Sie mehrere Fragen."
+msgstr "In the \"Quorum\" tab you fully manage this course's polls and collections: create, start and stop, present, share the QR code, follow results in real time and compare rounds (peer instruction). Bundle several questions via the \"Collections\" sidebar view."
+
+msgid "Studierende stimmen anonym per QR-Code oder Kurz-URL ab — ohne eigenes Login. Alle Lehrenden der Veranstaltung (auch Co-Lehrende) dürfen deren Abstimmungen und Sammlungen steuern."
+msgstr "Students vote anonymously via QR code or short URL — without their own login. All of the course's teachers (including co-teachers) may control its polls and collections."
+
+msgid "In diesem Reiter sehen Sie die gerade laufenden Abstimmungen und Sammlungen dieser Veranstaltung und können direkt teilnehmen — anonym, ohne dass Ihr Name gespeichert wird."
+msgstr "In this tab you see the currently running polls and collections of this course and can take part directly — anonymously, without your name being stored."
+
+msgid "Nach dem Ende einer Abstimmung sehen Sie hier die Ergebnisse, sofern die Lehrperson sie freigegeben hat. Bei Sammlungen folgt Ihr Gerät automatisch zur jeweils nächsten gestarteten Frage."
+msgstr "After a poll ends you see its results here, provided the teacher has released them. Within collections your device follows automatically to the next started question."
+
+msgid "Hier legen Sie eine neue Sammlung an. Der Name erscheint später als Titel im Presenter-Modus. Optional binden Sie die Sammlung an eine Veranstaltung — im Kurs-Reiter geschieht das automatisch; dann erscheint die Sammlung dort für Lehrende und Studierende."
+msgstr "Here you create a new collection. The name later appears as the title in presenter mode. Optionally link the collection to a course — in the course tab this happens automatically; the collection then appears there for teachers and students."
+
+msgid "Hier ändern Sie Name, Beschreibung und die Veranstaltungs-Bindung der Sammlung. Der Name erscheint als Titel im Presenter-Modus. Die Kursbindung der Sammlung ist unabhängig von der Zuordnung ihrer einzelnen Fragen."
+msgstr "Here you change the collection's name, description and course link. The name appears as the title in presenter mode. The collection's course link is independent of how its individual questions are assigned."
+
+msgid "Umfrage hinzufügen"
+msgstr "Add survey"

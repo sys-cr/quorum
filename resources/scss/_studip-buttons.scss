@@ -1,0 +1,103 @@
+/**
+ * Stud.IP standard buttons for standalone pages.
+ *
+ * The presenter and the anonymous vote page run without the Stud.IP
+ * PageLayout — the core CSS (`resources/assets/stylesheets/scss/buttons.scss`)
+ * is not loaded there, so `class="button"` would stay unstyled. This partial
+ * replicates the core look (Stud.IP 6.2) with quorum token fallbacks, scoped
+ * to the standalone roots so it does not apply twice in the course context
+ * (where the core CSS is present).
+ *
+ * Deliberate deviations from the core:
+ *   - `margin: 0` instead of `0.8em 0.6em 0.8em 0` — spacing comes from the
+ *     flex `gap`s of the quorum layouts.
+ *   - Touch targets: min. 44 px height on touch devices — the core button is
+ *     too flat for that.
+ */
+
+body.quorum-presenter-body,
+.quorum--polls-app {
+  /* `:where()` keeps the base-look specificity deliberately low (only the
+     scope counts) — component overrides like the red voting toggle
+     (`.quorum-presenter__toggle`, white text) otherwise lose against
+     `body.… button.button` and the toggle renders blue-on-red. */
+  :where(a.button, button.button) {
+    background: var(--color--global-background, var(--quorum-bg, #ffffff));
+    border: 1px solid var(--color--highlight, var(--quorum-brand, #28497c));
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: var(--color--highlight, var(--quorum-brand, #28497c));
+    cursor: pointer;
+    display: inline-block;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 130%;
+    margin: 0;
+    min-inline-size: 100px;
+    overflow: visible;
+    padding: 7px 14px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    inline-size: auto;
+    transition: none;
+
+    &:hover,
+    &:active,
+    &.active {
+      background-color: var(--color--highlight, var(--quorum-brand, #28497c));
+      color: var(--color--highlight-contrast, #ffffff);
+    }
+
+    &.disabled,
+    &[disabled] {
+      box-shadow: none;
+      color: var(--color--font-inactive, #767676);
+      background: var(--color--button-inactive-background, #eeeeee);
+      border: 1px solid var(--color--button-inactive-border, #cccccc);
+      cursor: not-allowed;
+    }
+
+    /* The core relies on the browser default; the dark-/light-themed
+           standalone pages need the token ring. */
+    &:focus-visible {
+      outline: var(--quorum-focus-ring, 2px solid #28497c);
+      outline-offset: 2px;
+    }
+
+    @media (pointer: coarse) {
+      min-block-size: 44px;
+    }
+  }
+
+  /* Grouped buttons (core: .button-group) — e.g. chart-type switcher. */
+  .button-group {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+
+    :where(button, .button) {
+      margin: 0;
+    }
+  }
+
+  @media (forced-colors: active) {
+    :where(a.button, button.button) {
+      background: ButtonFace;
+      color: ButtonText;
+      border-color: ButtonText;
+
+      &:hover,
+      &.active {
+        background: Highlight;
+        color: HighlightText;
+      }
+    }
+  }
+}

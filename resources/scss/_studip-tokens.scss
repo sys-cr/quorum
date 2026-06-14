@@ -1,0 +1,414 @@
+/**
+ * Quorum design tokens — Stud.IP avatar-inspired color system.
+ *
+ * Source of truth for colors, gradients, spacing and touch targets in all
+ * Quorum components. Components reference only `var(--quorum-*)`, never
+ * hardcoded hex values.
+ *
+ * The decorative main palette is a diagonal multi-stop gradient:
+ *   petrol → brand → dark-violet → magenta → orange.
+ * Brand blue stays for primary actions (buttons, links) but recedes as a
+ * decorative accent.
+ *
+ * Look: uniformly "soft" across all modes — aurora only in the app banner and
+ * empty state; bubbles solid in the collection color; components calm.
+ *
+ * Status colors are reserved and never appear as a decorative accent:
+ *   --quorum-success    dark-green #008512  (success feedback only)
+ *   --quorum-info       yellow     #ffbd33  (hints / activity)
+ *   --quorum-warning    orange     #f26e00  (warnings)
+ *   --quorum-error      red        #d60000  (errors / stop)
+ *
+ * Green rule:
+ *   - `--quorum-success` (dark-green) only for the "success" status
+ *   - `--quorum-green` (light Stud.IP green) allowed as a decorative accent
+ *
+ * Layering (later layers override):
+ *   1. `:root` — light defaults
+ *   2. `:root.theme-dark` / `.theme-dark` — manual toggle
+ *   3. `@media (prefers-color-scheme: dark)` — system dark mode
+ *   4. `:root.theme-high-contrast` / `.theme-high-contrast` — manual HC
+ *   5. `@media (prefers-contrast: more)` — user preference
+ *   6. `@media (forced-colors: active)` — Windows HC (system color keywords)
+ *
+ * File is project-neutral (no `quorum--` prefix in selectors) and can be reused
+ * as a shared style-guide building block in other Stud.IP projects.
+ */
+
+:root {
+    /* ============================================================
+       Avatar palette — decorative, five main stops
+       ============================================================ */
+    --quorum-petrol:       var(--petrol, #0e817b);   /* Stud.IP petrol */
+    --quorum-green:        #6ead10;   /* light green, decorative */
+    --quorum-brand:        #28497c;   /* Stud.IP brand */
+    --quorum-dark-violet:  #682c8b;
+    --quorum-magenta:      #b02e7c;   /* = Stud.IP violet */
+    --quorum-orange-deco:  #f26e00;   /* decorative in the gradient; do NOT use as an isolated accent */
+
+    /* Extended palette for rare accents */
+    --quorum-brand-light:   #36598f;
+    --quorum-brand-lighter: #899ab9;
+    --quorum-brown:         #a85d45;
+
+    /* ============================================================
+       Status reserves — semantic, never decorative.
+       Reference Stud.IP theme vars with a fallback for standalone use.
+       Stud.IP naming: good=success, info=hint, attention=warning,
+       warning=error/stop (follows Stud.IP messagebox.scss).
+       ============================================================ */
+    --quorum-success:  var(--color--good,       #008512);  /* dark-green, success only */
+    --quorum-info:     var(--color--info,        #ffbd33);  /* yellow / activity */
+    --quorum-warning:  var(--color--attention,   #f26e00);  /* orange */
+    --quorum-error:    var(--color--warning,     #d60000);  /* red, stop / error */
+
+    /* Status aliases (semantic component use) */
+    --quorum-running:  var(--quorum-info);     /* voting running */
+    --quorum-finished: var(--quorum-success);  /* voting finished */
+    --quorum-danger:   var(--quorum-error);
+
+    /* ============================================================
+       Aurora gradients — avatar diagonal
+       ============================================================ */
+    --quorum-aurora: linear-gradient(
+        135deg,
+        var(--quorum-petrol)       0%,
+        var(--quorum-brand)       30%,
+        var(--quorum-dark-violet) 50%,
+        var(--quorum-magenta)     70%,
+        var(--quorum-orange-deco) 100%
+    );
+
+    /* Soft variant for empty states in light mode (~18% saturation) */
+    --quorum-aurora-soft: linear-gradient(
+        135deg,
+        rgba(18, 156, 148, 0.18)   0%,
+        rgba(40,  73, 124, 0.14)  30%,
+        rgba(104, 44, 139, 0.16)  50%,
+        rgba(176, 46, 124, 0.18)  70%,
+        rgba(242, 110,  0, 0.18) 100%
+    );
+
+    /* ============================================================
+       Layout tokens
+       ============================================================ */
+    /* Stud.IP renders body text AND headings in (near-)black; brand blue is an
+       accent for links & actions only — NOT for text. Values follow Stud.IP's
+       own theme variables so Quorum follows a Stud.IP recolor:
+         --quorum-fg     = font-primary (gray-1 #101010)
+         --quorum-muted  = font-secondary (gray-3 #676767)
+         --quorum-border = input/tile-border (gray-5 #d8d8d8) */
+    --quorum-fg:       var(--color--font-primary,   #101010);
+    --quorum-bg:       var(--color--content-box-background, #ffffff);
+    --quorum-muted:    var(--color--font-secondary, #676767);
+    --quorum-border:   var(--color--input-field-border, #d8d8d8);
+
+    /* Link/accent tokens (reference brand) */
+    --quorum-link:           var(--quorum-brand);
+    --quorum-link-visited:   #1f3f70;
+    --quorum-accent:         var(--quorum-brand);
+    --quorum-accent-hi:      var(--quorum-brand-light);
+    --quorum-accent-contrast:#fff;
+
+    /* Bubble default — solid collection color; the concrete color comes from
+       the `.acc-*` modifier classes (see below). Default fallback is petrol. */
+    --quorum-bubble-bg:        var(--quorum-acc, var(--quorum-petrol));
+    --quorum-bubble-fg:        #fff;
+    --quorum-bubble-border:    var(--quorum-acc, var(--quorum-petrol));
+
+    /* Empty-state hero / message & block boxes — flat: light-gray header
+       (gray-6 #ededed) with black text, no gradient, no brand tint. */
+    --quorum-hero-bg:          var(--color--content-box-header, #ededed);
+    --quorum-hero-fg:          var(--quorum-fg);
+    --quorum-hero-border:      var(--quorum-border);
+
+    /* Sizing */
+    --quorum-button-min-size: 44px;
+    --quorum-radius:          0.25rem;
+    --quorum-focus-ring:      2px solid var(--quorum-accent);
+}
+
+/* ================================================================
+   Collection accent modifiers (.acc-*) — cycle through the avatar palette.
+   Usage: <article class="task-card acc-petrol">…</article>.
+   Sets --quorum-acc, inherited automatically by bubble + inline-start border.
+   ================================================================ */
+.acc-petrol      { --quorum-acc: var(--quorum-petrol); }
+.acc-green       { --quorum-acc: var(--quorum-green); }
+.acc-magenta     { --quorum-acc: var(--quorum-magenta); }
+.acc-violet      { --quorum-acc: var(--quorum-magenta); }   /* alias */
+.acc-brand       { --quorum-acc: var(--quorum-brand); }
+.acc-dark-violet { --quorum-acc: var(--quorum-dark-violet); }
+.acc-brown       { --quorum-acc: var(--quorum-brown); }
+
+/* ================================================================
+   Dark mode — keep the soft look, only lighter palette counterparts
+   ================================================================ */
+:root.theme-dark,
+.theme-dark {
+    --quorum-fg:              #f0f0f0;
+    --quorum-bg:              #3c454e;        /* Stud.IP $dark-gray-color */
+    --quorum-muted:           #b8c1cf;
+    --quorum-border:          #69767f;        /* Stud.IP $light-gray-color */
+
+    /* Avatar palette in lighter dark-mode counterparts */
+    --quorum-petrol:          #4ddacf;
+    --quorum-green:           #aede5b;
+    --quorum-brand:           #4f7bbd;
+    --quorum-dark-violet:     #a266c2;
+    --quorum-magenta:         #d667a8;
+    --quorum-orange-deco:     #ff8a3d;
+
+    --quorum-brand-light:     #6e94d0;
+    --quorum-brand-lighter:   #5d6e8b;
+    --quorum-brown:           #c8856e;
+
+    --quorum-success:         #4eb95c;
+    --quorum-info:            #ffd666;
+    --quorum-warning:         #ff8a3d;
+    --quorum-error:           #ff5a5a;
+
+    --quorum-link:            #6e94d0;
+    --quorum-link-visited:    #b6cdf0;
+    --quorum-accent:          var(--quorum-brand);
+    --quorum-accent-hi:       var(--quorum-brand-light);
+    --quorum-accent-contrast: #0a1626;
+
+    /* Soft: bubbles and primary buttons stay solid (inherited from :root) */
+    /* Hero/message boxes flat: no aurora gradient, just a subtly raised flat
+       dark surface. */
+    --quorum-hero-bg:         color-mix(in srgb, #ffffff 7%, var(--quorum-bg));
+    --quorum-hero-fg:         var(--quorum-fg);
+    --quorum-hero-border:     var(--quorum-border);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not(.theme-light) {
+        --quorum-fg:              #f0f0f0;
+        --quorum-bg:              #3c454e;        /* Stud.IP $dark-gray-color */
+        --quorum-muted:           #b8c1cf;
+        --quorum-border:          #69767f;        /* Stud.IP $light-gray-color */
+
+        /* lighter dark-mode counterparts */
+        --quorum-petrol:          #4ddacf;
+        --quorum-green:           #aede5b;
+        --quorum-brand:           #4f7bbd;
+        --quorum-dark-violet:     #a266c2;
+        --quorum-magenta:         #d667a8;
+        --quorum-orange-deco:     #ff8a3d;
+
+        --quorum-brand-light:     #6e94d0;
+        --quorum-brand-lighter:   #5d6e8b;
+        --quorum-brown:           #c8856e;
+
+        --quorum-success:         #4eb95c;
+        --quorum-info:            #ffd666;
+        --quorum-warning:         #ff8a3d;
+        --quorum-error:           #ff5a5a;
+
+        --quorum-link:            #6e94d0;
+        --quorum-link-visited:    #b6cdf0;
+        --quorum-accent:          var(--quorum-brand);
+        --quorum-accent-hi:       var(--quorum-brand-light);
+        --quorum-accent-contrast: #0a1626;
+
+        /* Soft in dark — bubbles/primary inherit solid from :root */
+        --quorum-hero-bg:         var(--quorum-aurora);
+        --quorum-hero-fg:         #fff;
+        --quorum-hero-border:     transparent;
+    }
+}
+
+/* ================================================================
+   High contrast — plain black on white.
+   No colored accents, no aurora, no gradients — maximum readability and
+   printer-friendliness. Status is differentiated via icons and text, not color.
+   ================================================================ */
+:root.theme-high-contrast,
+.theme-high-contrast {
+    --quorum-fg:              #000;
+    --quorum-bg:              #fff;
+    --quorum-muted:           #000;
+    --quorum-border:          #000;
+
+    /* Aurora palette fully reduced to black/white */
+    --quorum-petrol:          #000;
+    --quorum-green:           #000;
+    --quorum-brand:           #000;
+    --quorum-dark-violet:     #000;
+    --quorum-magenta:         #000;
+    --quorum-orange-deco:     #000;
+    --quorum-brand-light:     #000;
+    --quorum-brand-lighter:   #000;
+    --quorum-brown:           #000;
+
+    /* Status: no color code — icon + text carry the meaning */
+    --quorum-success:         #000;
+    --quorum-info:            #000;
+    --quorum-warning:         #000;
+    --quorum-error:           #000;
+
+    --quorum-link:            #000;
+    --quorum-link-visited:    #000;
+    --quorum-accent:          #000;
+    --quorum-accent-hi:       #000;
+    --quorum-accent-contrast: #fff;
+
+    /* Bubbles + buttons + hero: white with black border */
+    --quorum-bubble-bg:       #fff;
+    --quorum-bubble-fg:       #000;
+    --quorum-bubble-border:   #000;
+
+    --quorum-hero-bg:         #fff;
+    --quorum-hero-fg:         #000;
+    --quorum-hero-border:     #000;
+
+    --quorum-focus-ring:      3px solid #000;
+}
+
+/* `prefers-contrast: more` user system preference: same black/white scheme as
+   the explicit HC toggle. */
+@media (prefers-contrast: more) {
+    :root {
+        --quorum-fg:              #000;
+        --quorum-bg:              #fff;
+        --quorum-muted:           #000;
+        --quorum-border:          #000;
+
+        --quorum-petrol:          #000;
+        --quorum-green:           #000;
+        --quorum-brand:           #000;
+        --quorum-dark-violet:     #000;
+        --quorum-magenta:         #000;
+        --quorum-orange-deco:     #000;
+        --quorum-brand-light:     #000;
+        --quorum-brand-lighter:   #000;
+        --quorum-brown:           #000;
+
+        --quorum-success:         #000;
+        --quorum-info:            #000;
+        --quorum-warning:         #000;
+        --quorum-error:           #000;
+
+        --quorum-link:            #000;
+        --quorum-link-visited:    #000;
+        --quorum-accent:          #000;
+        --quorum-accent-hi:       #000;
+        --quorum-accent-contrast: #fff;
+
+        --quorum-bubble-bg:       #fff;
+        --quorum-bubble-fg:       #000;
+        --quorum-bubble-border:   #000;
+
+        --quorum-hero-bg:         #fff;
+        --quorum-hero-fg:         #000;
+        --quorum-hero-border:     #000;
+
+        --quorum-focus-ring:      3px solid #000;
+    }
+}
+
+/* ================================================================
+   forced-colors (Windows HC) — force system color keywords
+   ================================================================ */
+@media (forced-colors: active) {
+    :root {
+        --quorum-fg:              CanvasText;
+        --quorum-bg:              Canvas;
+        --quorum-muted:           GrayText;
+        --quorum-border:          CanvasText;
+
+        --quorum-petrol:          LinkText;
+        --quorum-green:           LinkText;
+        --quorum-brand:           LinkText;
+        --quorum-dark-violet:     LinkText;
+        --quorum-magenta:         LinkText;
+        --quorum-orange-deco:     Mark;
+        --quorum-brand-light:     LinkText;
+        --quorum-brand-lighter:   GrayText;
+        --quorum-brown:           GrayText;
+
+        --quorum-success:         Mark;
+        --quorum-info:            Mark;
+        --quorum-warning:         Mark;
+        --quorum-error:           Mark;
+
+        --quorum-link:            LinkText;
+        --quorum-link-visited:    VisitedText;
+        --quorum-accent:          LinkText;
+        --quorum-accent-hi:       LinkText;
+        --quorum-accent-contrast: Canvas;
+
+        --quorum-bubble-bg:       Canvas;
+        --quorum-bubble-fg:       CanvasText;
+        --quorum-bubble-border:   CanvasText;
+
+        --quorum-hero-bg:         Canvas;
+        --quorum-hero-fg:         CanvasText;
+        --quorum-hero-border:     CanvasText;
+
+        --quorum-focus-ring:      2px solid Highlight;
+    }
+}
+
+/* ─────────────────────────── Responsive tokens ───────────────────────────
+   Fluid scale based on `clamp(min, preferred, max)` with a `vw` share: scales
+   linearly with viewport width, does not collapse when very small nor explode
+   when very wide. The layout stays usable from 320 px up to 4K with the same
+   token set.
+
+   Breakpoints (documentary only, applied as media queries in components):
+     - phone-portrait: ≤ 480 px
+     - phone-landscape / tablet-portrait: ≤ 768 px
+     - tablet-landscape / desktop-narrow: ≤ 1024 px
+     - desktop-standard: ≤ 1440 px
+     - widescreen / 4K: > 1440 px
+*/
+:root {
+    /* Spacing (four steps) */
+    --quorum-space-xs: clamp(0.25rem, 0.2vw + 0.2rem, 0.4rem);
+    --quorum-space-sm: clamp(0.4rem,  0.3vw + 0.35rem, 0.6rem);
+    --quorum-space-md: clamp(0.6rem,  0.5vw + 0.5rem,  1rem);
+    --quorum-space-lg: clamp(0.9rem,  0.8vw + 0.7rem,  1.5rem);
+    --quorum-space-xl: clamp(1.4rem,  1.5vw + 1rem,    2.5rem);
+
+    /* Type scale — body stays absolute (browser default), headings fluid */
+    --quorum-text-sm:    clamp(0.8rem,  0.2vw + 0.7rem,  0.9rem);
+    --quorum-text-md:    clamp(0.95rem, 0.3vw + 0.85rem, 1.05rem);
+    --quorum-text-lg:    clamp(1.1rem,  0.5vw + 0.9rem,  1.4rem);
+    --quorum-text-xl:    clamp(1.3rem,  0.8vw + 0.9rem,  1.8rem);
+    --quorum-text-xxl:   clamp(1.6rem,  1.4vw + 0.8rem,  2.4rem);
+
+    /* App container width — prevents content filling the full screen on 4K so
+       content columns stay readable. */
+    --quorum-container-max:        1280px;
+    --quorum-container-narrow-max:  720px;   /* for forms, text */
+}
+
+/* ─────────────────────────── Global utility classes ───────────────────────────
+   A few classes shared by multiple apps + PHP views. Global rather than scoped
+   so classic PHP views (`<hr class="quorum--aurora-divider">`) can use them
+   without a Vue mount. */
+
+/* App container: centered + max width. Usable as a wrapper or directly on the
+   root. */
+.quorum--container {
+    inline-size: 100%;
+    max-inline-size: var(--quorum-container-max);
+    margin-inline: auto;
+    padding-inline: var(--quorum-space-md);
+    box-sizing: border-box;
+}
+.quorum--container--narrow {
+    max-inline-size: var(--quorum-container-narrow-max);
+}
+
+/* Aurora gradient divider — 3 px tall, var(--quorum-aurora) background
+   (black in HC mode). */
+.quorum--aurora-divider {
+    border: 0;
+    block-size: 3px;
+    background: var(--quorum-aurora);
+    border-radius: 999px;
+    margin: 0.4rem 0 1rem;
+}

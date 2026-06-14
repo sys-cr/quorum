@@ -1,0 +1,27 @@
+{
+    "name": "studip/quorum",
+    "description": "Quorum — Audience Response System für Stud.IP 6 (Fork von Cliqr)",
+    "type": "studip-plugin",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Bodo Steffen",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "source": "https://github.com/sys-cr/quorum"
+    },
+    "require": {
+        "php": ">=8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Quorum\\": "lib/"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "optimize-autoloader": true
+    }
+}
