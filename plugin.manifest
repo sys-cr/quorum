@@ -1,0 +1,15 @@
+pluginname=Quorum
+pluginclassname=QuorumStudipPlugin
+origin=studip-quorum
+version=1.0.0
+author=Bodo Steffen
+homepage=https://github.com/sys-cr/quorum
+localedomain=quorum
+studipMinVersion=6.0
+studipMaxVersion=6.99
+summary=Umfragetool für Liveabstimmungen.
+description=Umfragetool für Liveabstimmungen. Mit Quorum können Sie eigene Live-Abstimmungen anlegen und verwalten — kursunabhängig oder mit Veranstaltungs-Bindung. Studierende antworten anonym per QR-Code vom Smartphone, mobile-first (375 px), barrierefrei nach WCAG 2.2 AA.
+displayname=Quorum
+category=Inhalte und Aufgabenstellungen
+keywords=Audience Response System;Software-Clicker;mobile Abstimmung;QR-Code;barrierefrei;WCAG
+cli=cli/commands.php

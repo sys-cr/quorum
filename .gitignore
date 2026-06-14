@@ -1,0 +1,21 @@
+# Node-Abhängigkeiten (via `npm install` reproduzierbar)
+node_modules/
+
+# Lokale Konfiguration
+.env
+
+# Logs / temporäre Dateien
+*.log
+*.tmp
+*.bak
+*.swp
+
+# OS-Artefakte
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE
+.idea/
+.vscode/
+*.iml

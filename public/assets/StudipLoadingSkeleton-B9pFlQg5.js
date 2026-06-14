@@ -1,0 +1,1 @@
+import{_ as e,o,c as t}from"./i18n-BBALrs4t.js";const n={name:"StudipLoadingSkeleton"},s={class:"studip-loading-skeleton"};function a(c,d,i,r,p,_){return o(),t("div",s)}const u=e(n,[["render",a]]);export{u as default};
