@@ -122,14 +122,20 @@ declare(strict_types=1);
             </select>
         </label>
 
-        <?php // Scale: not free-text options but the number of scale points
-              // (2–5). Only visible for `scales` (JS below). ?>
+        <?php // Scale: numeric (1 … N) OR named steps. For "named" a template
+              // fills the option list (JS below); for "numeric" the server
+              // generates the points. Only visible for `scales`. ?>
         <fieldset id="quorum-scale-fieldset" class="quorum--new-scale" hidden>
-            <legend><?= _quorum('Skalenpunkte') ?> <span aria-hidden="true">*</span></legend>
-            <p class="quorum--new-options-hint">
-                <?= _quorum('Wie viele Stufen soll die Skala haben? Die Punkte werden als 1 … N angezeigt.') ?>
-            </p>
+            <legend><?= _quorum('Skala') ?> <span aria-hidden="true">*</span></legend>
+            <?php $scaleModeSel = (string) ($scaleMode ?? 'numeric'); ?>
             <label>
+                <span><?= _quorum('Skalentyp') ?></span>
+                <select name="scale_mode" id="quorum-scale-mode">
+                    <option value="numeric" <?= $scaleModeSel !== 'named' ? 'selected' : '' ?>><?= _quorum('Numerisch (1 … N)') ?></option>
+                    <option value="named"   <?= $scaleModeSel === 'named' ? 'selected' : '' ?>><?= _quorum('Benannte Stufen') ?></option>
+                </select>
+            </label>
+            <label id="quorum-scale-points-wrap">
                 <span><?= _quorum('Anzahl Skalenpunkte') ?></span>
                 <?php $scalePointsSel = (int) ($scalePoints ?? 5); ?>
                 <select name="scale_points" id="quorum-scale-points">
@@ -147,6 +153,15 @@ declare(strict_types=1);
             <p class="quorum--new-options-hint" id="quorum-options-hint">
                 <?= _quorum('Mindestens zwei Optionen — leere Felder werden ignoriert.') ?>
             </p>
+            <?php // Template picker (emoji sets / named scale steps): fills the
+                  // option list via JS. Options are populated per question type
+                  // from the PRESETS object below; the result stays editable. ?>
+            <label id="quorum-preset-wrap" hidden>
+                <span><?= _quorum('Vorlage') ?></span>
+                <select id="quorum-preset">
+                    <option value=""><?= _quorum('Vorlage wählen …') ?></option>
+                </select>
+            </label>
             <div id="quorum-options-list">
                 <?php foreach ($options as $i => $opt): ?>
                     <div class="quorum--option-row" data-option-row>
@@ -327,21 +342,63 @@ declare(strict_types=1);
 
 <script>
 (function () {
-    const sel     = document.getElementById('quorum-new-type');
-    const opts    = document.getElementById('quorum-new-options-fieldset');
-    const scaleFs = document.getElementById('quorum-scale-fieldset');
-    const hint    = document.getElementById('quorum-options-hint');
-    const quiz    = document.getElementById('quorum-quiz-fieldset');
-    const toggle  = document.getElementById('quorum-quiz-toggle');
-    const list    = document.getElementById('quorum-options-list');
-    const addBtn  = document.getElementById('quorum-add-option');
-    const capHint = document.getElementById('quorum-option-cap-hint');
-    const EMOJI_HINT   = <?= json_encode(_quorum('Emoji-Zeichen als Antwort-Option eintragen (z. B. 😀, 😐, 😕).')) ?>;
+    const sel        = document.getElementById('quorum-new-type');
+    const opts       = document.getElementById('quorum-new-options-fieldset');
+    const scaleFs    = document.getElementById('quorum-scale-fieldset');
+    const modeSel    = document.getElementById('quorum-scale-mode');
+    const pointsWrap = document.getElementById('quorum-scale-points-wrap');
+    const presetWrap = document.getElementById('quorum-preset-wrap');
+    const presetSel  = document.getElementById('quorum-preset');
+    const hint       = document.getElementById('quorum-options-hint');
+    const quiz       = document.getElementById('quorum-quiz-fieldset');
+    const toggle     = document.getElementById('quorum-quiz-toggle');
+    const list       = document.getElementById('quorum-options-list');
+    const addBtn     = document.getElementById('quorum-add-option');
+    const capHint    = document.getElementById('quorum-option-cap-hint');
+    const EMOJI_HINT   = <?= json_encode(_quorum('Emoji-Zeichen als Antwort-Option eintragen — oder eine Vorlage wählen.')) ?>;
     const MC_HINT      = <?= json_encode(_quorum('Mindestens zwei Optionen — leere Felder werden ignoriert.')) ?>;
+    const SCALE_HINT   = <?= json_encode(_quorum('Benennen Sie die Skalenstufen (höchste zuerst) — oder wählen Sie eine Vorlage.')) ?>;
     const OPTION_LABEL = <?= json_encode(_quorum('Option %d')) ?>;
     const MIN = 2, MAX = 20;
 
+    // Templates: fill the option list. Names are translatable (_quorum), emoji
+    // characters stay literal. The BBB set follows BigBlueButton reactions.
+    const PRESETS = {
+        scales: [
+            { name: <?= json_encode(_quorum('Zustimmung (5-stufig)')) ?>,
+              items: [<?= json_encode(_quorum('trifft zu')) ?>, <?= json_encode(_quorum('trifft eher zu')) ?>, <?= json_encode(_quorum('teils-teils')) ?>, <?= json_encode(_quorum('trifft eher nicht zu')) ?>, <?= json_encode(_quorum('trifft nicht zu')) ?>] },
+            { name: <?= json_encode(_quorum('Zustimmung (4-stufig)')) ?>,
+              items: [<?= json_encode(_quorum('trifft zu')) ?>, <?= json_encode(_quorum('trifft eher zu')) ?>, <?= json_encode(_quorum('trifft eher nicht zu')) ?>, <?= json_encode(_quorum('trifft nicht zu')) ?>] },
+            { name: <?= json_encode(_quorum('Zustimmung (3-stufig)')) ?>,
+              items: [<?= json_encode(_quorum('trifft zu')) ?>, <?= json_encode(_quorum('teils-teils')) ?>, <?= json_encode(_quorum('trifft nicht zu')) ?>] },
+            { name: <?= json_encode(_quorum('Häufigkeit (5-stufig)')) ?>,
+              items: [<?= json_encode(_quorum('immer')) ?>, <?= json_encode(_quorum('oft')) ?>, <?= json_encode(_quorum('manchmal')) ?>, <?= json_encode(_quorum('selten')) ?>, <?= json_encode(_quorum('nie')) ?>] }
+        ],
+        emoji: [
+            { name: <?= json_encode(_quorum('Stimmung (3-stufig)')) ?>, items: ['😀', '😐', '🙁'] },
+            { name: <?= json_encode(_quorum('Stimmung (5-stufig)')) ?>, items: ['😀', '🙂', '😐', '🙁', '😞'] },
+            { name: <?= json_encode(_quorum('Daumen')) ?>, items: ['👍', '👎'] },
+            { name: <?= json_encode(_quorum('Verständnis')) ?>, items: ['✅', '🤔', '❌'] },
+            { name: <?= json_encode(_quorum('BBB-Reaktionen')) ?>, items: ['👍', '👎', '👏', '😀', '😕', '😮'] }
+        ]
+    };
+
     function rows() { return Array.prototype.slice.call(list.querySelectorAll('[data-option-row]')); }
+
+    // Empty row template (from the first rendered row) used for cloning.
+    const TEMPLATE = rows()[0].cloneNode(true);
+    TEMPLATE.querySelectorAll('input').forEach(function (inp) {
+        if (inp.type === 'checkbox') { inp.checked = false; } else { inp.value = ''; }
+    });
+
+    function buildRow(value) {
+        const row = TEMPLATE.cloneNode(true);
+        row.querySelectorAll('input').forEach(function (inp) {
+            if (inp.type === 'checkbox') { inp.checked = false; }
+            else { inp.value = (inp.name === 'options[]') ? (value || '') : ''; }
+        });
+        return row;
+    }
 
     // Quiz boxes only for "Multiple Choice (one answer)" AND active opt-in.
     function applyQuizVisibility() {
@@ -367,14 +424,32 @@ declare(strict_types=1);
     }
 
     function addRow() {
-        const rs = rows();
-        if (rs.length >= MAX) return;
-        const clone = rs[rs.length - 1].cloneNode(true);
-        clone.querySelectorAll('input').forEach(function (inp) {
-            if (inp.type === 'checkbox') { inp.checked = false; } else { inp.value = ''; }
-        });
-        list.appendChild(clone);
+        if (rows().length >= MAX) return;
+        list.appendChild(buildRow(''));
         renumber();
+    }
+
+    // Rebuild the option list from a template (at least 2 rows).
+    function setRows(values) {
+        const vals = values.slice(0, MAX);
+        while (vals.length < MIN) vals.push('');
+        list.textContent = '';
+        vals.forEach(function (v) { list.appendChild(buildRow(v)); });
+        renumber();
+    }
+
+    // Populate the template select per question type (keep the placeholder).
+    function populatePresetSelect(type) {
+        if (presetSel.dataset.type === type) return;
+        presetSel.dataset.type = type;
+        presetSel.length = 1;
+        (PRESETS[type] || []).forEach(function (p, i) {
+            const o = document.createElement('option');
+            o.value = String(i);
+            o.textContent = p.name;
+            presetSel.appendChild(o);
+        });
+        presetSel.value = '';
     }
 
     addBtn.addEventListener('click', addRow);
@@ -384,15 +459,27 @@ declare(strict_types=1);
         btn.closest('[data-option-row]').remove();
         renumber();
     });
+    presetSel.addEventListener('change', function () {
+        const type = presetSel.dataset.type;
+        const idx  = parseInt(presetSel.value, 10);
+        const preset = type && !isNaN(idx) ? (PRESETS[type] || [])[idx] : null;
+        if (preset) setRows(preset.items);
+    });
 
-    // Type change: scale → points select; mc/multi/emoji → option list;
-    // freitext → nothing. Quiz only for mc.
+    // Type change: scale → numeric (points) or named (template + list);
+    // emoji → template + list; mc/multi → list; freitext → nothing. Quiz only mc.
     function update() {
         const v = sel.value;
-        const isList = (v === 'mc' || v === 'multi' || v === 'emoji');
-        scaleFs.hidden = (v !== 'scales');
-        opts.hidden    = !isList;
-        if (isList) hint.textContent = (v === 'emoji') ? EMOJI_HINT : MC_HINT;
+        const isScales   = (v === 'scales');
+        const scaleNamed = isScales && modeSel.value === 'named';
+        const showList   = (v === 'mc' || v === 'multi' || v === 'emoji' || scaleNamed);
+        scaleFs.hidden    = !isScales;
+        pointsWrap.hidden = !(isScales && modeSel.value === 'numeric');
+        opts.hidden       = !showList;
+        const presetType  = (v === 'emoji') ? 'emoji' : (scaleNamed ? 'scales' : '');
+        presetWrap.hidden = !presetType;
+        if (presetType) populatePresetSelect(presetType);
+        if (showList) hint.textContent = (v === 'emoji') ? EMOJI_HINT : (scaleNamed ? SCALE_HINT : MC_HINT);
         const isQuizable = (v === 'mc');
         quiz.hidden = !isQuizable;
         if (!isQuizable) toggle.checked = false;   // no hidden quiz_mode on submit
@@ -400,6 +487,7 @@ declare(strict_types=1);
     }
 
     sel.addEventListener('change', update);
+    modeSel.addEventListener('change', update);
     toggle.addEventListener('change', applyQuizVisibility);
     update();
     renumber();

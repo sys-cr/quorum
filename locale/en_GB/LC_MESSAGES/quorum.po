@@ -578,3 +578,81 @@ msgstr "Add option"
 
 msgid "Maximal %d Optionen."
 msgstr "At most %d options."
+
+msgid "Skalentyp"
+msgstr "Scale type"
+
+msgid "Numerisch (1 … N)"
+msgstr "Numeric (1 … N)"
+
+msgid "Benannte Stufen"
+msgstr "Named steps"
+
+msgid "Vorlage"
+msgstr "Template"
+
+msgid "Vorlage wählen …"
+msgstr "Choose a template …"
+
+msgid "Emoji-Zeichen als Antwort-Option eintragen — oder eine Vorlage wählen."
+msgstr "Enter emoji characters as answer options — or choose a template."
+
+msgid "Benennen Sie die Skalenstufen (höchste zuerst) — oder wählen Sie eine Vorlage."
+msgstr "Name the scale steps (highest first) — or choose a template."
+
+msgid "Zustimmung (5-stufig)"
+msgstr "Agreement (5-point)"
+
+msgid "Zustimmung (4-stufig)"
+msgstr "Agreement (4-point)"
+
+msgid "Zustimmung (3-stufig)"
+msgstr "Agreement (3-point)"
+
+msgid "Häufigkeit (5-stufig)"
+msgstr "Frequency (5-point)"
+
+msgid "trifft zu"
+msgstr "agree"
+
+msgid "trifft eher zu"
+msgstr "somewhat agree"
+
+msgid "teils-teils"
+msgstr "neutral"
+
+msgid "trifft eher nicht zu"
+msgstr "somewhat disagree"
+
+msgid "trifft nicht zu"
+msgstr "disagree"
+
+msgid "immer"
+msgstr "always"
+
+msgid "oft"
+msgstr "often"
+
+msgid "manchmal"
+msgstr "sometimes"
+
+msgid "selten"
+msgstr "rarely"
+
+msgid "nie"
+msgstr "never"
+
+msgid "Stimmung (3-stufig)"
+msgstr "Mood (3-point)"
+
+msgid "Stimmung (5-stufig)"
+msgstr "Mood (5-point)"
+
+msgid "Daumen"
+msgstr "Thumbs"
+
+msgid "Verständnis"
+msgstr "Understanding"
+
+msgid "BBB-Reaktionen"
+msgstr "BBB reactions"

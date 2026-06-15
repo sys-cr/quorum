@@ -298,13 +298,15 @@ class WorkplaceController extends PluginController
         // The service enables quiz mode only for single choice with at least
         // one correct option.
         $correctIdx = array_map('intval', (array) \Request::getArray('options_correct'));
-        // Scale: number of points (2–5) instead of free-text options.
+        // Scale: numeric (point count 2–5) OR named steps (labels from the
+        // option fields). `scale_mode` decides; anything else → numeric.
         $scalePoints = (int) \Request::get('scale_points', 5);
+        $scaleMode   = \Request::get('scale_mode') === 'named' ? 'named' : 'numeric';
 
         return [
             'question'      => (string) \Request::get('question'),
             'type'          => $type,
-            'options'       => $this->buildCreateOptions($type, $optionsIn, $correctIdx, $scalePoints),
+            'options'       => $this->buildCreateOptions($type, $optionsIn, $correctIdx, $scalePoints, $scaleMode),
             'seminarId'     => $seminarId,
             'duration'      => $durationMin > 0 ? $durationMin * 60 : null,
             'quizMode'      => \Request::int('quiz_mode', 0) === 1,
@@ -323,15 +325,16 @@ class WorkplaceController extends PluginController
      * @param list<int>                $correctIdx
      * @return list<array{label: string, correct: bool}>
      */
-    private function buildCreateOptions(string $type, array $optionsIn, array $correctIdx, int $scalePoints): array
+    private function buildCreateOptions(string $type, array $optionsIn, array $correctIdx, int $scalePoints, string $scaleMode): array
     {
         if ($type === 'freitext') {
             return [];
         }
-        // Scale: not free-text answers but N numeric scale points (2–5). The
-        // points are generated server-side as "1" … "N"; scales have no quiz
-        // (no `correct`).
-        if ($type === 'scales') {
+        // Numeric scale: N scale points (2–5) generated server-side as
+        // "1" … "N"; no quiz (`correct` always false). A NAMED scale falls
+        // through on purpose and uses the entered step labels like an ordinary
+        // option list (below).
+        if ($type === 'scales' && $scaleMode !== 'named') {
             $n = max(2, min(5, $scalePoints));
             return array_map(
                 static fn (int $i): array => ['label' => (string) ($i + 1), 'correct' => false],
