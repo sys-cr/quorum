@@ -44,6 +44,28 @@ declare(strict_types=1);
     margin-block-end: 0.5rem;
     color: #666;
 }
+.quorum--option-row { margin-block-end: 0.5rem; }
+.quorum--option-input {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+.quorum--option-input input { flex: 1 1 auto; min-inline-size: 0; }
+.quorum--option-remove {
+    flex: 0 0 auto;
+    inline-size: 2rem;
+    block-size: 2rem;
+    padding: 0;
+    border: 1px solid var(--quorum-border, #c5c7ca);
+    border-radius: 4px;
+    background: transparent;
+    color: inherit;
+    font-size: 1.2rem;
+    line-height: 1;
+    cursor: pointer;
+}
+.quorum--option-remove:hover { background: rgba(0, 0, 0, 0.06); }
+#quorum-add-option { margin-block-start: 0.25rem; }
 </style>
 
 <form action="<?= htmlspecialchars($actionUrl, ENT_QUOTES) ?>"
@@ -100,43 +122,59 @@ declare(strict_types=1);
             </select>
         </label>
 
+        <?php // Scale: not free-text options but the number of scale points
+              // (2–5). Only visible for `scales` (JS below). ?>
+        <fieldset id="quorum-scale-fieldset" class="quorum--new-scale" hidden>
+            <legend><?= _quorum('Skalenpunkte') ?> <span aria-hidden="true">*</span></legend>
+            <p class="quorum--new-options-hint">
+                <?= _quorum('Wie viele Stufen soll die Skala haben? Die Punkte werden als 1 … N angezeigt.') ?>
+            </p>
+            <label>
+                <span><?= _quorum('Anzahl Skalenpunkte') ?></span>
+                <?php $scalePointsSel = (int) ($scalePoints ?? 5); ?>
+                <select name="scale_points" id="quorum-scale-points">
+                    <?php foreach ([2, 3, 4, 5] as $n): ?>
+                        <option value="<?= $n ?>" <?= $n === $scalePointsSel ? 'selected' : '' ?>><?= $n ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </label>
+        </fieldset>
+
+        <?php // Answer options for mc/multi/emoji: dynamic, 2 by default,
+              // extendable via “Add option” up to 20 (JS below). ?>
         <fieldset id="quorum-new-options-fieldset" class="quorum--new-options">
             <legend><?= _quorum('Antwort-Optionen') ?> <span aria-hidden="true">*</span></legend>
             <p class="quorum--new-options-hint" id="quorum-options-hint">
                 <?= _quorum('Mindestens zwei Optionen — leere Felder werden ignoriert.') ?>
             </p>
-            <?php foreach ($options as $i => $opt): ?>
-                <label>
-                    <span><?= htmlspecialchars(sprintf(_quorum('Option %d'), $i + 1), ENT_QUOTES) ?></span>
-                    <input type="text"
-                           name="options[]"
-                           value="<?= htmlspecialchars((string) ($opt['label'] ?? ''), ENT_QUOTES) ?>"
-                           placeholder="<?= htmlspecialchars(_quorum('Antwort-Text'), ENT_QUOTES) ?>">
-                </label>
-                <label class="quorum--new-correct" hidden>
-                    <input type="checkbox" name="options_correct[]" value="<?= $i ?>"
-                        <?= !empty($opt['correct']) ? 'checked' : '' ?>>
-                    <?= _quorum('Richtige Antwort (Quiz)') ?>
-                </label>
-            <?php endforeach; ?>
-            <label>
-                <span><?= htmlspecialchars(_quorum('Option 3 (optional)'), ENT_QUOTES) ?></span>
-                <input type="text" name="options[]"
-                       placeholder="<?= htmlspecialchars(_quorum('Antwort-Text'), ENT_QUOTES) ?>">
-            </label>
-            <label class="quorum--new-correct" hidden>
-                <input type="checkbox" name="options_correct[]" value="2">
-                <?= _quorum('Richtige Antwort (Quiz)') ?>
-            </label>
-            <label>
-                <span><?= htmlspecialchars(_quorum('Option 4 (optional)'), ENT_QUOTES) ?></span>
-                <input type="text" name="options[]"
-                       placeholder="<?= htmlspecialchars(_quorum('Antwort-Text'), ENT_QUOTES) ?>">
-            </label>
-            <label class="quorum--new-correct" hidden>
-                <input type="checkbox" name="options_correct[]" value="3">
-                <?= _quorum('Richtige Antwort (Quiz)') ?>
-            </label>
+            <div id="quorum-options-list">
+                <?php foreach ($options as $i => $opt): ?>
+                    <div class="quorum--option-row" data-option-row>
+                        <label>
+                            <span class="quorum--option-label"><?= htmlspecialchars(sprintf(_quorum('Option %d'), $i + 1), ENT_QUOTES) ?></span>
+                            <span class="quorum--option-input">
+                                <input type="text"
+                                       name="options[]"
+                                       value="<?= htmlspecialchars((string) ($opt['label'] ?? ''), ENT_QUOTES) ?>"
+                                       placeholder="<?= htmlspecialchars(_quorum('Antwort-Text'), ENT_QUOTES) ?>">
+                                <button type="button" class="quorum--option-remove" hidden
+                                        aria-label="<?= htmlspecialchars(_quorum('Option entfernen'), ENT_QUOTES) ?>">&times;</button>
+                            </span>
+                        </label>
+                        <label class="quorum--new-correct" hidden>
+                            <input type="checkbox" name="options_correct[]" value="<?= $i ?>"
+                                <?= !empty($opt['correct']) ? 'checked' : '' ?>>
+                            <?= _quorum('Richtige Antwort (Quiz)') ?>
+                        </label>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+            <button type="button" id="quorum-add-option" class="button">
+                + <?= _quorum('Weitere Option') ?>
+            </button>
+            <p class="quorum--new-options-hint" id="quorum-option-cap-hint" hidden>
+                <?= htmlspecialchars(sprintf(_quorum('Maximal %d Optionen.'), 20), ENT_QUOTES) ?>
+            </p>
         </fieldset>
 
         <fieldset id="quorum-quiz-fieldset" hidden>
@@ -289,36 +327,81 @@ declare(strict_types=1);
 
 <script>
 (function () {
-    const sel    = document.getElementById('quorum-new-type');
-    const opts   = document.getElementById('quorum-new-options-fieldset');
-    const hint   = document.getElementById('quorum-options-hint');
-    const quiz   = document.getElementById('quorum-quiz-fieldset');
-    const toggle = document.getElementById('quorum-quiz-toggle');
-    const checks = document.querySelectorAll('.quorum--new-correct');
-    const EMOJI_HINT = <?= json_encode(_quorum('Emoji-Zeichen als Antwort-Option eintragen (z. B. 😀, 😐, 😕).')) ?>;
-    const MC_HINT    = <?= json_encode(_quorum('Mindestens zwei Optionen — leere Felder werden ignoriert.')) ?>;
+    const sel     = document.getElementById('quorum-new-type');
+    const opts    = document.getElementById('quorum-new-options-fieldset');
+    const scaleFs = document.getElementById('quorum-scale-fieldset');
+    const hint    = document.getElementById('quorum-options-hint');
+    const quiz    = document.getElementById('quorum-quiz-fieldset');
+    const toggle  = document.getElementById('quorum-quiz-toggle');
+    const list    = document.getElementById('quorum-options-list');
+    const addBtn  = document.getElementById('quorum-add-option');
+    const capHint = document.getElementById('quorum-option-cap-hint');
+    const EMOJI_HINT   = <?= json_encode(_quorum('Emoji-Zeichen als Antwort-Option eintragen (z. B. 😀, 😐, 😕).')) ?>;
+    const MC_HINT      = <?= json_encode(_quorum('Mindestens zwei Optionen — leere Felder werden ignoriert.')) ?>;
+    const OPTION_LABEL = <?= json_encode(_quorum('Option %d')) ?>;
+    const MIN = 2, MAX = 20;
 
+    function rows() { return Array.prototype.slice.call(list.querySelectorAll('[data-option-row]')); }
+
+    // Quiz boxes only for "Multiple Choice (one answer)" AND active opt-in.
+    function applyQuizVisibility() {
+        const show = (sel.value === 'mc') && toggle.checked;
+        list.querySelectorAll('.quorum--new-correct').forEach(function (el) { el.hidden = !show; });
+    }
+
+    // Re-set "Option N" labels, checkbox values (0-based = submit position) and
+    // the remove buttons (only from >2 rows) after every change.
+    function renumber() {
+        const rs = rows();
+        rs.forEach(function (row, i) {
+            const lbl = row.querySelector('.quorum--option-label');
+            if (lbl) lbl.textContent = OPTION_LABEL.replace('%d', i + 1);
+            const cb = row.querySelector('input[name="options_correct[]"]');
+            if (cb) cb.value = String(i);
+            const rm = row.querySelector('.quorum--option-remove');
+            if (rm) rm.hidden = rs.length <= MIN;
+        });
+        addBtn.disabled = rs.length >= MAX;
+        if (capHint) capHint.hidden = rs.length < MAX;
+        applyQuizVisibility();
+    }
+
+    function addRow() {
+        const rs = rows();
+        if (rs.length >= MAX) return;
+        const clone = rs[rs.length - 1].cloneNode(true);
+        clone.querySelectorAll('input').forEach(function (inp) {
+            if (inp.type === 'checkbox') { inp.checked = false; } else { inp.value = ''; }
+        });
+        list.appendChild(clone);
+        renumber();
+    }
+
+    addBtn.addEventListener('click', addRow);
+    list.addEventListener('click', function (e) {
+        const btn = e.target.closest('.quorum--option-remove');
+        if (!btn || rows().length <= MIN) return;
+        btn.closest('[data-option-row]').remove();
+        renumber();
+    });
+
+    // Type change: scale → points select; mc/multi/emoji → option list;
+    // freitext → nothing. Quiz only for mc.
     function update() {
         const v = sel.value;
-        if (v === 'freitext') {
-            opts.hidden = true;
-        } else {
-            opts.hidden = false;
-            hint.textContent = (v === 'emoji') ? EMOJI_HINT : MC_HINT;
-        }
-        // Quiz only for "Multiple Choice (one answer)", in two steps: first the
-        // opt-in toggle, the per-option "correct answer" boxes only once it is
-        // actually on. Otherwise every ordinary poll (mc is the default) would
-        // confusingly show "correct answer" next to its options.
+        const isList = (v === 'mc' || v === 'multi' || v === 'emoji');
+        scaleFs.hidden = (v !== 'scales');
+        opts.hidden    = !isList;
+        if (isList) hint.textContent = (v === 'emoji') ? EMOJI_HINT : MC_HINT;
         const isQuizable = (v === 'mc');
         quiz.hidden = !isQuizable;
         if (!isQuizable) toggle.checked = false;   // no hidden quiz_mode on submit
-        const showCorrect = isQuizable && toggle.checked;
-        checks.forEach(function (el) { el.hidden = !showCorrect; });
+        applyQuizVisibility();
     }
 
     sel.addEventListener('change', update);
-    toggle.addEventListener('change', update);
+    toggle.addEventListener('change', applyQuizVisibility);
     update();
+    renumber();
 })();
 </script>

@@ -561,29 +561,20 @@ msgstr "By default, participants see the results of finished polls in the Quorum
 msgid "Sie sind nicht Mitglied dieser Veranstaltung."
 msgstr "You are not a member of this course."
 
-msgid "Veranstaltung"
-msgstr "Course"
+msgid "Skalenpunkte"
+msgstr "Scale points"
 
-msgid "Leer lassen für eine kursunabhängige Sammlung. Suchbereich = oben gewähltes Semester."
-msgstr "Leave empty for a course-independent collection. Search scope = the semester selected above."
+msgid "Anzahl Skalenpunkte"
+msgstr "Number of scale points"
 
-msgid "Im Reiter „Quorum\" verwalten Sie die Abstimmungen und Sammlungen dieser Veranstaltung vollständig: anlegen, starten und beenden, präsentieren, QR-Code teilen, Ergebnisse in Echtzeit verfolgen und Runden vergleichen (Peer Instruction). Über die Sidebar-Ansicht „Sammlungen\" bündeln Sie mehrere Fragen."
-msgstr "In the \"Quorum\" tab you fully manage this course's polls and collections: create, start and stop, present, share the QR code, follow results in real time and compare rounds (peer instruction). Bundle several questions via the \"Collections\" sidebar view."
+msgid "Wie viele Stufen soll die Skala haben? Die Punkte werden als 1 … N angezeigt."
+msgstr "How many steps should the scale have? The points are shown as 1 … N."
 
-msgid "Studierende stimmen anonym per QR-Code oder Kurz-URL ab — ohne eigenes Login. Alle Lehrenden der Veranstaltung (auch Co-Lehrende) dürfen deren Abstimmungen und Sammlungen steuern."
-msgstr "Students vote anonymously via QR code or short URL — without their own login. All of the course's teachers (including co-teachers) may control its polls and collections."
+msgid "Option entfernen"
+msgstr "Remove option"
 
-msgid "In diesem Reiter sehen Sie die gerade laufenden Abstimmungen und Sammlungen dieser Veranstaltung und können direkt teilnehmen — anonym, ohne dass Ihr Name gespeichert wird."
-msgstr "In this tab you see the currently running polls and collections of this course and can take part directly — anonymously, without your name being stored."
+msgid "Weitere Option"
+msgstr "Add option"
 
-msgid "Nach dem Ende einer Abstimmung sehen Sie hier die Ergebnisse, sofern die Lehrperson sie freigegeben hat. Bei Sammlungen folgt Ihr Gerät automatisch zur jeweils nächsten gestarteten Frage."
-msgstr "After a poll ends you see its results here, provided the teacher has released them. Within collections your device follows automatically to the next started question."
-
-msgid "Hier legen Sie eine neue Sammlung an. Der Name erscheint später als Titel im Presenter-Modus. Optional binden Sie die Sammlung an eine Veranstaltung — im Kurs-Reiter geschieht das automatisch; dann erscheint die Sammlung dort für Lehrende und Studierende."
-msgstr "Here you create a new collection. The name later appears as the title in presenter mode. Optionally link the collection to a course — in the course tab this happens automatically; the collection then appears there for teachers and students."
-
-msgid "Hier ändern Sie Name, Beschreibung und die Veranstaltungs-Bindung der Sammlung. Der Name erscheint als Titel im Presenter-Modus. Die Kursbindung der Sammlung ist unabhängig von der Zuordnung ihrer einzelnen Fragen."
-msgstr "Here you change the collection's name, description and course link. The name appears as the title in presenter mode. The collection's course link is independent of how its individual questions are assigned."
-
-msgid "Umfrage hinzufügen"
-msgstr "Add survey"
+msgid "Maximal %d Optionen."
+msgstr "At most %d options."
