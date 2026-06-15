@@ -665,3 +665,9 @@ msgstr "Point label"
 
 msgid "Single Choice (eine Antwort)"
 msgstr "Single Choice (one answer)"
+
+msgid "Weitere Reaktionen"
+msgstr "More reactions"
+
+msgid "Emoji eintragen oder per Copy & Paste einfügen — Vorlagen sind frei austauschbar."
+msgstr "Enter emoji or paste them (copy & paste) — templates are freely swappable."

@@ -360,7 +360,7 @@ declare(strict_types=1);
     const list       = document.getElementById('quorum-options-list');
     const addBtn     = document.getElementById('quorum-add-option');
     const capHint    = document.getElementById('quorum-option-cap-hint');
-    const EMOJI_HINT   = <?= json_encode(_quorum('Emoji-Zeichen als Antwort-Option eintragen — oder eine Vorlage wählen.')) ?>;
+    const EMOJI_HINT   = <?= json_encode(_quorum('Emoji eintragen oder per Copy & Paste einfügen — Vorlagen sind frei austauschbar.')) ?>;
     const MC_HINT      = <?= json_encode(_quorum('Mindestens zwei Optionen — leere Felder werden ignoriert.')) ?>;
     const SCALE_HINT   = <?= json_encode(_quorum('Benennen Sie die Skalenstufen (höchste zuerst) — oder wählen Sie eine Vorlage.')) ?>;
     const OPTION_LABEL = <?= json_encode(_quorum('Option %d')) ?>;
@@ -386,7 +386,7 @@ declare(strict_types=1);
             { name: <?= json_encode(_quorum('Stimmung (5-stufig)')) ?>, items: ['😀', '🙂', '😐', '🙁', '😞'] },
             { name: <?= json_encode(_quorum('Daumen')) ?>, items: ['👍', '👎'] },
             { name: <?= json_encode(_quorum('Verständnis')) ?>, items: ['✅', '🤔', '❌'] },
-            { name: <?= json_encode(_quorum('BBB-Reaktionen')) ?>, items: ['👍', '👎', '👏', '😀', '😕', '😮'] }
+            { name: <?= json_encode(_quorum('Weitere Reaktionen')) ?>, items: ['👍', '👎', '👏', '😀', '😕', '😮'] }
         ]
     };
 
