@@ -270,7 +270,7 @@
     "confirmDeleteAccept": "Endgültig löschen"
   },
   "pollType": {
-    "mc": "Multiple Choice",
+    "mc": "Single Choice",
     "multi": "Mehrfachauswahl",
     "scales": "Skala",
     "emoji": "Emoji",

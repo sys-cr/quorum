@@ -119,7 +119,7 @@ declare(strict_types=1);
         <label>
             <span><?= _quorum('Fragetyp') ?></span>
             <select name="type" id="quorum-new-type">
-                <option value="mc"       <?= ($type ?? 'mc') === 'mc'       ? 'selected' : '' ?>><?= _quorum('Multiple Choice (eine Antwort)') ?></option>
+                <option value="mc"       <?= ($type ?? 'mc') === 'mc'       ? 'selected' : '' ?>><?= _quorum('Single Choice (eine Antwort)') ?></option>
                 <option value="multi"    <?= ($type ?? 'mc') === 'multi'    ? 'selected' : '' ?>><?= _quorum('Multiple Choice (Mehrfachauswahl)') ?></option>
                 <option value="scales"   <?= ($type ?? 'mc') === 'scales'   ? 'selected' : '' ?>><?= _quorum('Skala (Likert)') ?></option>
                 <option value="freitext" <?= ($type ?? 'mc') === 'freitext' ? 'selected' : '' ?>><?= _quorum('Freitext (offene Antwort)') ?></option>
@@ -407,11 +407,22 @@ declare(strict_types=1);
         return row;
     }
 
+    // Stud.IP's form CSS sets `label { display: … }` (author rule beats the UA
+    // `[hidden]`), so <label> wrappers do not hide via the hidden attribute
+    // alone. Inline `display:none !important` beats any stylesheet rule — that
+    // guarantees hiding.
+    function setHidden(el, hide) {
+        if (!el) return;
+        el.hidden = hide;
+        if (hide) { el.style.setProperty('display', 'none', 'important'); }
+        else { el.style.removeProperty('display'); }
+    }
+
     // Correct marking is OPTIONAL and applies only to single/multiple choice
     // (mc/multi) — independent of the quiz toggle. Off for all other types.
     function applyCorrectVisibility() {
         const show = (sel.value === 'mc' || sel.value === 'multi');
-        list.querySelectorAll('.quorum--new-correct').forEach(function (el) { el.hidden = !show; });
+        list.querySelectorAll('.quorum--new-correct').forEach(function (el) { setHidden(el, !show); });
     }
 
     // Re-set "Option N" labels, checkbox values (0-based = submit position) and
@@ -487,10 +498,10 @@ declare(strict_types=1);
         const scaleNamed = isScales && modeSel.value === 'named';
         const showList   = (v === 'mc' || v === 'multi' || v === 'emoji' || scaleNamed);
         scaleFs.hidden    = !isScales;
-        pointsWrap.hidden = !(isScales && modeSel.value === 'numeric');
+        setHidden(pointsWrap, !(isScales && modeSel.value === 'numeric'));
         opts.hidden       = !showList;
         const presetType  = (v === 'emoji') ? 'emoji' : (scaleNamed ? 'scales' : '');
-        presetWrap.hidden = !presetType;
+        setHidden(presetWrap, !presetType);
         if (presetType) populatePresetSelect(presetType);
         if (showList) hint.textContent = (v === 'emoji') ? EMOJI_HINT : (scaleNamed ? SCALE_HINT : MC_HINT);
         const isQuizable = (v === 'mc');

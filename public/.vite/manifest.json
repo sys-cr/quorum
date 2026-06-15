@@ -6,135 +6,135 @@
     "isDynamicEntry": true
   },
   "../studip-core/resources/vue/components/StudipActionMenu.vue": {
-    "file": "assets/StudipActionMenu-CqQZxKza.js",
+    "file": "assets/StudipActionMenu-wyJ6NH8o.js",
     "name": "StudipActionMenu",
     "src": "../studip-core/resources/vue/components/StudipActionMenu.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_gettext-Dx8c2Svn.js",
-      "_i18n-BBALrs4t.js",
+      "_gettext-DqVfMhnh.js",
+      "_i18n-CtgFk1s1.js",
       "_preload-helper-Dp1pzeXC.js"
     ]
   },
   "../studip-core/resources/vue/components/StudipIcon.vue": {
-    "file": "assets/StudipIcon-DFw6VMOk.js",
+    "file": "assets/StudipIcon-DAEedS98.js",
     "name": "StudipIcon",
     "src": "../studip-core/resources/vue/components/StudipIcon.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_i18n-BBALrs4t.js"
+      "_i18n-CtgFk1s1.js"
     ]
   },
   "../studip-core/resources/vue/components/StudipLoadingSkeleton.vue": {
-    "file": "assets/StudipLoadingSkeleton-B9pFlQg5.js",
+    "file": "assets/StudipLoadingSkeleton-P_kFeSJd.js",
     "name": "StudipLoadingSkeleton",
     "src": "../studip-core/resources/vue/components/StudipLoadingSkeleton.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_i18n-BBALrs4t.js"
+      "_i18n-CtgFk1s1.js"
     ]
   },
   "../studip-core/resources/vue/components/StudipMessageBox.vue": {
-    "file": "assets/StudipMessageBox-CSlsDKUY.js",
+    "file": "assets/StudipMessageBox-D3vTkW9E.js",
     "name": "StudipMessageBox",
     "src": "../studip-core/resources/vue/components/StudipMessageBox.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_gettext-Dx8c2Svn.js",
-      "_i18n-BBALrs4t.js",
+      "_gettext-DqVfMhnh.js",
+      "_i18n-CtgFk1s1.js",
       "_preload-helper-Dp1pzeXC.js"
     ]
   },
   "../studip-core/resources/vue/components/StudipPagination.vue": {
-    "file": "assets/StudipPagination-C7iYS1PZ.js",
+    "file": "assets/StudipPagination-C8OzjNtV.js",
     "name": "StudipPagination",
     "src": "../studip-core/resources/vue/components/StudipPagination.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_i18n-BBALrs4t.js"
+      "_i18n-CtgFk1s1.js"
     ]
   },
   "../studip-core/resources/vue/components/StudipProgressIndicator.vue": {
-    "file": "assets/StudipProgressIndicator-FjqwpqDV.js",
+    "file": "assets/StudipProgressIndicator-y_W_EqqU.js",
     "name": "StudipProgressIndicator",
     "src": "../studip-core/resources/vue/components/StudipProgressIndicator.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_i18n-BBALrs4t.js"
+      "_i18n-CtgFk1s1.js"
     ]
   },
   "../studip-core/resources/vue/components/StudipSwitch.vue": {
-    "file": "assets/StudipSwitch-C3q_MbXk.js",
+    "file": "assets/StudipSwitch-TxqSvzwO.js",
     "name": "StudipSwitch",
     "src": "../studip-core/resources/vue/components/StudipSwitch.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_i18n-BBALrs4t.js"
+      "_i18n-CtgFk1s1.js"
     ],
     "css": [
       "assets/StudipSwitch-Cqp-gaWH.css"
-    ]
-  },
-  "_QrCodeDialog-9D_XVgvA.js": {
-    "file": "assets/QrCodeDialog-9D_XVgvA.js",
-    "name": "QrCodeDialog",
-    "imports": [
-      "_i18n-BBALrs4t.js"
-    ],
-    "css": [
-      "assets/QrCodeDialog-B-r5xlHk.css"
     ]
   },
   "_QrCodeDialog-B-r5xlHk.css": {
     "file": "assets/QrCodeDialog-B-r5xlHk.css",
     "src": "_QrCodeDialog-B-r5xlHk.css"
   },
+  "_QrCodeDialog-BArcFsJo.js": {
+    "file": "assets/QrCodeDialog-BArcFsJo.js",
+    "name": "QrCodeDialog",
+    "imports": [
+      "_i18n-CtgFk1s1.js"
+    ],
+    "css": [
+      "assets/QrCodeDialog-B-r5xlHk.css"
+    ]
+  },
   "_QuizLeaderboard-BON7dFH6.css": {
     "file": "assets/QuizLeaderboard-BON7dFH6.css",
     "src": "_QuizLeaderboard-BON7dFH6.css"
   },
-  "_QuizLeaderboard-tlKwUEC6.js": {
-    "file": "assets/QuizLeaderboard-tlKwUEC6.js",
+  "_QuizLeaderboard-BXGRHrEY.js": {
+    "file": "assets/QuizLeaderboard-BXGRHrEY.js",
     "name": "QuizLeaderboard",
     "imports": [
-      "_i18n-BBALrs4t.js"
+      "_i18n-CtgFk1s1.js"
     ],
     "css": [
       "assets/QuizLeaderboard-BON7dFH6.css"
+    ]
+  },
+  "_QuorumDialog-9D7cR0Xp.js": {
+    "file": "assets/QuorumDialog-9D7cR0Xp.js",
+    "name": "QuorumDialog",
+    "imports": [
+      "_i18n-CtgFk1s1.js",
+      "_QrCodeDialog-BArcFsJo.js"
+    ],
+    "css": [
+      "assets/QuorumDialog-BuAegRkL.css"
     ]
   },
   "_QuorumDialog-BuAegRkL.css": {
     "file": "assets/QuorumDialog-BuAegRkL.css",
     "src": "_QuorumDialog-BuAegRkL.css"
   },
-  "_QuorumDialog-CTOqjk-D.js": {
-    "file": "assets/QuorumDialog-CTOqjk-D.js",
-    "name": "QuorumDialog",
-    "imports": [
-      "_i18n-BBALrs4t.js",
-      "_QrCodeDialog-9D_XVgvA.js"
-    ],
-    "css": [
-      "assets/QuorumDialog-BuAegRkL.css"
-    ]
-  },
   "__studip-tokens-BVv0dWAT.css": {
     "file": "assets/_studip-tokens-BVv0dWAT.css",
     "src": "__studip-tokens-BVv0dWAT.css"
   },
-  "_gettext-Dx8c2Svn.js": {
-    "file": "assets/gettext-Dx8c2Svn.js",
+  "_gettext-DqVfMhnh.js": {
+    "file": "assets/gettext-DqVfMhnh.js",
     "name": "gettext",
     "imports": [
       "_preload-helper-Dp1pzeXC.js",
-      "_i18n-BBALrs4t.js"
+      "_i18n-CtgFk1s1.js"
     ],
     "dynamicImports": [
       "../studip-core/locale/en/LC_MESSAGES/js-resources.json"
     ]
   },
-  "_i18n-BBALrs4t.js": {
-    "file": "assets/i18n-BBALrs4t.js",
+  "_i18n-CtgFk1s1.js": {
+    "file": "assets/i18n-CtgFk1s1.js",
     "name": "i18n"
   },
   "_pluginUrl-CVL6cZkb.js": {
@@ -145,12 +145,12 @@
     "file": "assets/preload-helper-Dp1pzeXC.js",
     "name": "preload-helper"
   },
-  "_studip-components-mPfkDobS.js": {
-    "file": "assets/studip-components-mPfkDobS.js",
+  "_studip-components-BjCFmSRt.js": {
+    "file": "assets/studip-components-BjCFmSRt.js",
     "name": "studip-components",
     "imports": [
       "_preload-helper-Dp1pzeXC.js",
-      "_i18n-BBALrs4t.js"
+      "_i18n-CtgFk1s1.js"
     ],
     "dynamicImports": [
       "../studip-core/resources/vue/components/StudipIcon.vue",
@@ -162,48 +162,48 @@
       "../studip-core/resources/vue/components/StudipPagination.vue"
     ]
   },
-  "_studip-gettext-4J5HhIjC.js": {
-    "file": "assets/studip-gettext-4J5HhIjC.js",
+  "_studip-gettext-CpSw9tih.js": {
+    "file": "assets/studip-gettext-CpSw9tih.js",
     "name": "studip-gettext",
     "imports": [
-      "_i18n-BBALrs4t.js"
+      "_i18n-CtgFk1s1.js"
     ]
   },
   "resources/vue/collection-actions-app/main.js": {
-    "file": "assets/quorum-collection-actions-BMokg87T.js",
+    "file": "assets/quorum-collection-actions-BcVcFzNX.js",
     "name": "quorum-collection-actions",
     "src": "resources/vue/collection-actions-app/main.js",
     "isEntry": true,
     "imports": [
-      "_i18n-BBALrs4t.js",
-      "_QuorumDialog-CTOqjk-D.js",
-      "_QrCodeDialog-9D_XVgvA.js"
+      "_i18n-CtgFk1s1.js",
+      "_QuorumDialog-9D7cR0Xp.js",
+      "_QrCodeDialog-BArcFsJo.js"
     ]
   },
   "resources/vue/course-app/components/results/ResultsContainer.vue": {
-    "file": "assets/ResultsContainer-TkpoOLaL.js",
+    "file": "assets/ResultsContainer-C-LqcGgb.js",
     "name": "ResultsContainer",
     "src": "resources/vue/course-app/components/results/ResultsContainer.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_i18n-BBALrs4t.js"
+      "_i18n-CtgFk1s1.js"
     ],
     "css": [
       "assets/ResultsContainer-B1YAhvtJ.css"
     ]
   },
   "resources/vue/course-app/main.js": {
-    "file": "assets/quorum-courseapp-B9incWAw.js",
+    "file": "assets/quorum-courseapp-C6UWU5dk.js",
     "name": "quorum-courseapp",
     "src": "resources/vue/course-app/main.js",
     "isEntry": true,
     "imports": [
-      "_i18n-BBALrs4t.js",
-      "_studip-gettext-4J5HhIjC.js",
+      "_i18n-CtgFk1s1.js",
+      "_studip-gettext-CpSw9tih.js",
       "_pluginUrl-CVL6cZkb.js",
-      "_studip-components-mPfkDobS.js",
-      "_QuorumDialog-CTOqjk-D.js",
-      "_QrCodeDialog-9D_XVgvA.js",
+      "_studip-components-BjCFmSRt.js",
+      "_QuorumDialog-9D7cR0Xp.js",
+      "_QrCodeDialog-BArcFsJo.js",
       "_preload-helper-Dp1pzeXC.js"
     ],
     "css": [
@@ -211,31 +211,31 @@
     ]
   },
   "resources/vue/polls-app/main.js": {
-    "file": "assets/quorum-pollsview-WSG8gTvw.js",
+    "file": "assets/quorum-pollsview-D7jnbJgt.js",
     "name": "quorum-pollsview",
     "src": "resources/vue/polls-app/main.js",
     "isEntry": true,
     "imports": [
-      "_i18n-BBALrs4t.js",
-      "_studip-gettext-4J5HhIjC.js",
+      "_i18n-CtgFk1s1.js",
+      "_studip-gettext-CpSw9tih.js",
       "_pluginUrl-CVL6cZkb.js",
-      "_QuizLeaderboard-tlKwUEC6.js"
+      "_QuizLeaderboard-BXGRHrEY.js"
     ],
     "css": [
       "assets/quorum-pollsview-CHsPEwLX.css"
     ]
   },
   "resources/vue/presenter-app/main.js": {
-    "file": "assets/quorum-presenter-Btr_ZY-B.js",
+    "file": "assets/quorum-presenter-WHC7miPU.js",
     "name": "quorum-presenter",
     "src": "resources/vue/presenter-app/main.js",
     "isEntry": true,
     "imports": [
-      "_i18n-BBALrs4t.js",
-      "_studip-gettext-4J5HhIjC.js",
+      "_i18n-CtgFk1s1.js",
+      "_studip-gettext-CpSw9tih.js",
       "_preload-helper-Dp1pzeXC.js",
-      "_QuizLeaderboard-tlKwUEC6.js",
-      "_QrCodeDialog-9D_XVgvA.js"
+      "_QuizLeaderboard-BXGRHrEY.js",
+      "_QrCodeDialog-BArcFsJo.js"
     ],
     "dynamicImports": [
       "resources/vue/course-app/components/results/ResultsContainer.vue"
@@ -246,16 +246,16 @@
     ]
   },
   "resources/vue/workplace-app/main.js": {
-    "file": "assets/quorum-workplace-C47xDtv_.js",
+    "file": "assets/quorum-workplace-DUyqBY1X.js",
     "name": "quorum-workplace",
     "src": "resources/vue/workplace-app/main.js",
     "isEntry": true,
     "imports": [
-      "_i18n-BBALrs4t.js",
-      "_studip-gettext-4J5HhIjC.js",
-      "_QuorumDialog-CTOqjk-D.js",
-      "_QrCodeDialog-9D_XVgvA.js",
-      "_studip-components-mPfkDobS.js",
+      "_i18n-CtgFk1s1.js",
+      "_studip-gettext-CpSw9tih.js",
+      "_QuorumDialog-9D7cR0Xp.js",
+      "_QrCodeDialog-BArcFsJo.js",
+      "_studip-components-BjCFmSRt.js",
       "_preload-helper-Dp1pzeXC.js"
     ],
     "dynamicImports": [
