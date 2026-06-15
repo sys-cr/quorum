@@ -375,15 +375,9 @@ const ariaFor = (id) => {
     }
 }
 
-/* Dark mode: darker inner card, subtler petrol tint. */
-@media (prefers-color-scheme: dark) {
-    .quorum--compare-delta thead th {
-        background: color-mix(in srgb, var(--quorum-petrol) 12%, var(--quorum-bg));
-    }
-    .quorum--compare-delta-th-delta {
-        background: color-mix(in srgb, var(--quorum-magenta) 12%, var(--quorum-bg)) !important;
-    }
-}
+/* Dark mode (opt-in `.theme-dark` only, Storybook/preview): darker inner card,
+   subtler petrol tint. Deliberately NO `prefers-color-scheme: dark` — Quorum
+   follows Stud.IP's light shell. */
 :global(.theme-dark) {
     .quorum--compare-delta thead th {
         background: color-mix(in srgb, var(--quorum-petrol) 12%, var(--quorum-bg));

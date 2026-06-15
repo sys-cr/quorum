@@ -118,9 +118,9 @@
       "assets/QuorumDialog-BuAegRkL.css"
     ]
   },
-  "__studip-tokens-B9oqmdDc.css": {
-    "file": "assets/_studip-tokens-B9oqmdDc.css",
-    "src": "__studip-tokens-B9oqmdDc.css"
+  "__studip-tokens-BVv0dWAT.css": {
+    "file": "assets/_studip-tokens-BVv0dWAT.css",
+    "src": "__studip-tokens-BVv0dWAT.css"
   },
   "_gettext-Dx8c2Svn.js": {
     "file": "assets/gettext-Dx8c2Svn.js",
@@ -193,7 +193,7 @@
     ]
   },
   "resources/vue/course-app/main.js": {
-    "file": "assets/quorum-courseapp-BtTxTLZZ.js",
+    "file": "assets/quorum-courseapp-B9incWAw.js",
     "name": "quorum-courseapp",
     "src": "resources/vue/course-app/main.js",
     "isEntry": true,
@@ -207,11 +207,11 @@
       "_preload-helper-Dp1pzeXC.js"
     ],
     "css": [
-      "assets/quorum-courseapp-CA4ktJpP.css"
+      "assets/quorum-courseapp-D2BgR_6_.css"
     ]
   },
   "resources/vue/polls-app/main.js": {
-    "file": "assets/quorum-pollsview-ivhRfX2h.js",
+    "file": "assets/quorum-pollsview-WSG8gTvw.js",
     "name": "quorum-pollsview",
     "src": "resources/vue/polls-app/main.js",
     "isEntry": true,
@@ -222,11 +222,11 @@
       "_QuizLeaderboard-tlKwUEC6.js"
     ],
     "css": [
-      "assets/quorum-pollsview-BGapfXa0.css"
+      "assets/quorum-pollsview-CHsPEwLX.css"
     ]
   },
   "resources/vue/presenter-app/main.js": {
-    "file": "assets/quorum-presenter-DEt7efoN.js",
+    "file": "assets/quorum-presenter-Btr_ZY-B.js",
     "name": "quorum-presenter",
     "src": "resources/vue/presenter-app/main.js",
     "isEntry": true,
@@ -242,11 +242,11 @@
     ],
     "css": [
       "assets/quorum-presenter-BK8jyDoY.css",
-      "assets/_studip-tokens-B9oqmdDc.css"
+      "assets/_studip-tokens-BVv0dWAT.css"
     ]
   },
   "resources/vue/workplace-app/main.js": {
-    "file": "assets/quorum-workplace-BWEggz1Z.js",
+    "file": "assets/quorum-workplace-C47xDtv_.js",
     "name": "quorum-workplace",
     "src": "resources/vue/workplace-app/main.js",
     "isEntry": true,
@@ -262,8 +262,8 @@
       "resources/vue/course-app/components/results/ResultsContainer.vue"
     ],
     "css": [
-      "assets/quorum-workplace-D8f7xuFj.css",
-      "assets/_studip-tokens-B9oqmdDc.css"
+      "assets/quorum-workplace-Dmg8nia3.css",
+      "assets/_studip-tokens-BVv0dWAT.css"
     ]
   }
 }

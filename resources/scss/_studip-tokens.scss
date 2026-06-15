@@ -24,12 +24,16 @@
  *   - `--quorum-green` (light Stud.IP green) allowed as a decorative accent
  *
  * Layering (later layers override):
- *   1. `:root` — light defaults
- *   2. `:root.theme-dark` / `.theme-dark` — manual toggle
- *   3. `@media (prefers-color-scheme: dark)` — system dark mode
- *   4. `:root.theme-high-contrast` / `.theme-high-contrast` — manual HC
- *   5. `@media (prefers-contrast: more)` — user preference
- *   6. `@media (forced-colors: active)` — Windows HC (system color keywords)
+ *   1. `:root` — light defaults; follows Stud.IP's light shell
+ *   2. `:root.theme-dark` / `.theme-dark` — manual toggle, Storybook/preview only
+ *   3. `:root.theme-high-contrast` / `.theme-high-contrast` — manual HC
+ *   4. `@media (prefers-contrast: more)` — user preference
+ *   5. `@media (forced-colors: active)` — Windows HC (system color keywords)
+ *
+ * Deliberately NO `@media (prefers-color-scheme: dark)`: Stud.IP does not follow
+ * the OS dark preference (its shell stays light), so Quorum must not go dark on
+ * its own — otherwise dark cards sit inside a light Stud.IP (contrast break).
+ * Quorum's only "dark" is the opt-in high-contrast mode (USER_HIGH_CONTRAST).
  *
  * File is project-neutral (no `quorum--` prefix in selectors) and can be reused
  * as a shared style-guide building block in other Stud.IP projects.
@@ -183,44 +187,6 @@
     --quorum-hero-bg:         color-mix(in srgb, #ffffff 7%, var(--quorum-bg));
     --quorum-hero-fg:         var(--quorum-fg);
     --quorum-hero-border:     var(--quorum-border);
-}
-
-@media (prefers-color-scheme: dark) {
-    :root:not(.theme-light) {
-        --quorum-fg:              #f0f0f0;
-        --quorum-bg:              #3c454e;        /* Stud.IP $dark-gray-color */
-        --quorum-muted:           #b8c1cf;
-        --quorum-border:          #69767f;        /* Stud.IP $light-gray-color */
-
-        /* lighter dark-mode counterparts */
-        --quorum-petrol:          #4ddacf;
-        --quorum-green:           #aede5b;
-        --quorum-brand:           #4f7bbd;
-        --quorum-dark-violet:     #a266c2;
-        --quorum-magenta:         #d667a8;
-        --quorum-orange-deco:     #ff8a3d;
-
-        --quorum-brand-light:     #6e94d0;
-        --quorum-brand-lighter:   #5d6e8b;
-        --quorum-brown:           #c8856e;
-        --quorum-slate:           #95a0b3;
-
-        --quorum-success:         #4eb95c;
-        --quorum-info:            #ffd666;
-        --quorum-warning:         #ff8a3d;
-        --quorum-error:           #ff5a5a;
-
-        --quorum-link:            #6e94d0;
-        --quorum-link-visited:    #b6cdf0;
-        --quorum-accent:          var(--quorum-brand);
-        --quorum-accent-hi:       var(--quorum-brand-light);
-        --quorum-accent-contrast: #0a1626;
-
-        /* Soft in dark — bubbles/primary inherit solid from :root */
-        --quorum-hero-bg:         var(--quorum-aurora);
-        --quorum-hero-fg:         #fff;
-        --quorum-hero-border:     transparent;
-    }
 }
 
 /* ================================================================
