@@ -179,7 +179,7 @@ declare(strict_types=1);
                         <label class="quorum--new-correct" hidden>
                             <input type="checkbox" name="options_correct[]" value="<?= $i ?>"
                                 <?= !empty($opt['correct']) ? 'checked' : '' ?>>
-                            <?= _quorum('Richtige Antwort (Quiz)') ?>
+                            <?= _quorum('Richtige Antwort (optional)') ?>
                         </label>
                     </div>
                 <?php endforeach; ?>
@@ -400,9 +400,10 @@ declare(strict_types=1);
         return row;
     }
 
-    // Quiz boxes only for "Multiple Choice (one answer)" AND active opt-in.
-    function applyQuizVisibility() {
-        const show = (sel.value === 'mc') && toggle.checked;
+    // Correct marking is OPTIONAL and applies only to single/multiple choice
+    // (mc/multi) — independent of the quiz toggle. Off for all other types.
+    function applyCorrectVisibility() {
+        const show = (sel.value === 'mc' || sel.value === 'multi');
         list.querySelectorAll('.quorum--new-correct').forEach(function (el) { el.hidden = !show; });
     }
 
@@ -420,7 +421,7 @@ declare(strict_types=1);
         });
         addBtn.disabled = rs.length >= MAX;
         if (capHint) capHint.hidden = rs.length < MAX;
-        applyQuizVisibility();
+        applyCorrectVisibility();
     }
 
     function addRow() {
@@ -483,12 +484,22 @@ declare(strict_types=1);
         const isQuizable = (v === 'mc');
         quiz.hidden = !isQuizable;
         if (!isQuizable) toggle.checked = false;   // no hidden quiz_mode on submit
-        applyQuizVisibility();
+        applyCorrectVisibility();
     }
+
+    // Single choice: at most ONE correct answer — the checkbox acts like a
+    // radio (checking another clears the previous one). Multiple choice allows
+    // several. Unchecking is always possible (= none marked).
+    list.addEventListener('change', function (e) {
+        const cb = e.target.closest('.quorum--new-correct input[type="checkbox"]');
+        if (!cb || sel.value !== 'mc' || !cb.checked) return;
+        list.querySelectorAll('.quorum--new-correct input[type="checkbox"]').forEach(function (other) {
+            if (other !== cb) other.checked = false;
+        });
+    });
 
     sel.addEventListener('change', update);
     modeSel.addEventListener('change', update);
-    toggle.addEventListener('change', applyQuizVisibility);
     update();
     renumber();
 })();

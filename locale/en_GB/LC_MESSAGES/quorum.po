@@ -656,3 +656,6 @@ msgstr "Understanding"
 
 msgid "BBB-Reaktionen"
 msgstr "BBB reactions"
+
+msgid "Richtige Antwort (optional)"
+msgstr "Correct answer (optional)"

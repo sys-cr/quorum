@@ -608,10 +608,13 @@ class ApiController extends PluginController
             'question' => $poll->question,
             'options'  => $poll->optionsForParticipants(),
         ];
-        // Learning effect: for a quiz, mark the correct answer — the question
-        // is guaranteed to have ended here (checked above), so this is safe.
-        if ($poll->quizMode) {
-            $payload['correct'] = $poll->correctOptionIds();
+        // Learning effect: highlight the answer(s) marked correct — for quizzes
+        // AND for ordinary SC/MC polls, as long as the author marked any
+        // (optional). The question is guaranteed to have ended here (checked
+        // above), so nothing is revealed before voting.
+        $correctIds = $poll->correctOptionIds();
+        if ($correctIds !== []) {
+            $payload['correct'] = $correctIds;
         }
         if ($poll->type === 'matrix') {
             $payload['counts'] = $repo->aggregateMatrixCountsForPoll($pollId);
