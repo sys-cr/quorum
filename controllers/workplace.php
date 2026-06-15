@@ -335,7 +335,7 @@ class WorkplaceController extends PluginController
         // through on purpose and uses the entered step labels like an ordinary
         // option list (below).
         if ($type === 'scales' && $scaleMode !== 'named') {
-            $n = max(2, min(5, $scalePoints));
+            $n = max(2, min(6, $scalePoints));
             return array_map(
                 static fn (int $i): array => ['label' => (string) ($i + 1), 'correct' => false],
                 range(0, $n - 1)

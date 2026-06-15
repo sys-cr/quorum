@@ -659,3 +659,6 @@ msgstr "BBB reactions"
 
 msgid "Richtige Antwort (optional)"
 msgstr "Correct answer (optional)"
+
+msgid "Punkt-Beschriftung"
+msgstr "Point label"

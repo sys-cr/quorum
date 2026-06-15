@@ -66,6 +66,11 @@ declare(strict_types=1);
 }
 .quorum--option-remove:hover { background: rgba(0, 0, 0, 0.06); }
 #quorum-add-option { margin-block-start: 0.25rem; }
+/* Stud.IP's forms.scss forces `label { display: block !important }`, which
+   overrides the `[hidden]` attribute on our <label> wrappers (points field,
+   template). Win it back with a more specific rule + !important so hidden
+   labels really disappear. */
+#quorum-new-form [hidden] { display: none !important; }
 </style>
 
 <form action="<?= htmlspecialchars($actionUrl, ENT_QUOTES) ?>"
@@ -139,7 +144,7 @@ declare(strict_types=1);
                 <span><?= _quorum('Anzahl Skalenpunkte') ?></span>
                 <?php $scalePointsSel = (int) ($scalePoints ?? 5); ?>
                 <select name="scale_points" id="quorum-scale-points">
-                    <?php foreach ([2, 3, 4, 5] as $n): ?>
+                    <?php foreach ([2, 3, 4, 5, 6] as $n): ?>
                         <option value="<?= $n ?>" <?= $n === $scalePointsSel ? 'selected' : '' ?>><?= $n ?></option>
                     <?php endforeach; ?>
                 </select>
@@ -359,6 +364,8 @@ declare(strict_types=1);
     const MC_HINT      = <?= json_encode(_quorum('Mindestens zwei Optionen — leere Felder werden ignoriert.')) ?>;
     const SCALE_HINT   = <?= json_encode(_quorum('Benennen Sie die Skalenstufen (höchste zuerst) — oder wählen Sie eine Vorlage.')) ?>;
     const OPTION_LABEL = <?= json_encode(_quorum('Option %d')) ?>;
+    const ANSWER_PH    = <?= json_encode(_quorum('Antwort-Text')) ?>;
+    const POINT_PH     = <?= json_encode(_quorum('Punkt-Beschriftung')) ?>;
     const MIN = 2, MAX = 20;
 
     // Templates: fill the option list. Names are translatable (_quorum), emoji
@@ -411,11 +418,16 @@ declare(strict_types=1);
     // the remove buttons (only from >2 rows) after every change.
     function renumber() {
         const rs = rows();
+        // Named scale steps want "Point label" as placeholder, every other
+        // option list wants "Answer text".
+        const ph = (sel.value === 'scales' && modeSel.value === 'named') ? POINT_PH : ANSWER_PH;
         rs.forEach(function (row, i) {
             const lbl = row.querySelector('.quorum--option-label');
             if (lbl) lbl.textContent = OPTION_LABEL.replace('%d', i + 1);
             const cb = row.querySelector('input[name="options_correct[]"]');
             if (cb) cb.value = String(i);
+            const txt = row.querySelector('input[name="options[]"]');
+            if (txt) txt.placeholder = ph;
             const rm = row.querySelector('.quorum--option-remove');
             if (rm) rm.hidden = rs.length <= MIN;
         });
@@ -484,7 +496,9 @@ declare(strict_types=1);
         const isQuizable = (v === 'mc');
         quiz.hidden = !isQuizable;
         if (!isQuizable) toggle.checked = false;   // no hidden quiz_mode on submit
-        applyCorrectVisibility();
+        // renumber() instead of just applyCorrectVisibility(): also refreshes the
+        // placeholders (point label vs. answer text) on type/mode change.
+        renumber();
     }
 
     // Single choice: at most ONE correct answer — the checkbox acts like a
