@@ -18,7 +18,7 @@ trait ManualDownloadTrait
 {
     protected function sendManualPdf(string $audience): void
     {
-        $lang = ManualService::langFromLocale((string) ($GLOBALS['_language'] ?? 'de_DE'));
+        $lang = ManualService::langFromLocale((string) ($_SESSION['_language'] ?? $GLOBALS['_language'] ?? 'de_DE'));
         $service = new ManualService($this->plugin->getPluginPath() . '/docs/user');
         $html = $service->html($lang, $audience);
 

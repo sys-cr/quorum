@@ -44,7 +44,7 @@ class PController extends PluginController
         $this->assetBaseUrl = $this->plugin->getPluginURL();
         $this->pluginUrl    = \PluginEngine::getURL($this->plugin, [], '', true);
         $this->token        = $token;
-        $this->lang         = (string) ($GLOBALS['_language'] ?? 'de_DE');
+        $this->lang         = (string) ($_SESSION['_language'] ?? $GLOBALS['_language'] ?? 'de_DE');
         // Student manual (only the "Teilnehmen" section) as PDF — linked in the
         // footer of the vote page.
         $this->manualUrl    = \PluginEngine::getURL($this->plugin, [], 'p/manual', true);

@@ -72,9 +72,11 @@ class IndexController extends PluginController
         $this->assetBaseUrl = $this->plugin->getPluginURL();
         $this->pluginUrl    = \PluginEngine::getURL($this->plugin, [], '', true);
 
-        // Stud.IP sets $GLOBALS['_language'] (e.g. 'de_DE'); the view passes
-        // it to STUDIP.LANGUAGE_BASE for vue-i18n.
-        $this->lang = (string) ($GLOBALS['_language'] ?? 'de_DE');
+        // Active UI language = `$_SESSION['_language']` (Stud.IP sets it in
+        // language.inc.php; the sidebar gettext follows the same source). In the
+        // plugin controller context `$GLOBALS['_language']` is often NOT set →
+        // fallback only. Passed to STUDIP.LANGUAGE_BASE / data-lang.
+        $this->lang = (string) ($_SESSION['_language'] ?? $GLOBALS['_language'] ?? 'de_DE');
 
         // The role controls which component the course-app mounts (teachers:
         // management; students: read-only participation/result view).

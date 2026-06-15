@@ -904,7 +904,7 @@ class WorkplaceController extends PluginController
         // `pluginUrl`: Trails dispatcher path for API + routes.
         $this->assetBaseUrl = $this->plugin->getPluginURL();
         $this->pluginUrl    = \PluginEngine::getURL($this->plugin, [], '', true);
-        $this->lang         = (string) ($GLOBALS['_language'] ?? 'de_DE');
+        $this->lang         = (string) ($_SESSION['_language'] ?? $GLOBALS['_language'] ?? 'de_DE');
 
         // Push CSS bundles into `<head>` — a `<link>` in `<body>` would load
         // Stud.IP default styles AFTER the Quorum tokens and override our Aurora
@@ -1358,7 +1358,7 @@ class WorkplaceController extends PluginController
         $this->bundleJs  = $manifest->assetUrl($entry);
         $this->bundleCss = $manifest->cssUrls($entry);
         $this->pluginUrl = \PluginEngine::getURL($this->plugin, [], '', true);
-        $this->lang      = (string) ($GLOBALS['_language'] ?? 'de_DE');
+        $this->lang      = (string) ($_SESSION['_language'] ?? $GLOBALS['_language'] ?? 'de_DE');
         $this->csrf      = \CSRFProtection::token();
         $this->collection = [
             'id'   => $collection->id,
@@ -1412,7 +1412,7 @@ class WorkplaceController extends PluginController
         $this->bundleJs  = $manifest->assetUrl($entry);
         $this->bundleCss = $manifest->cssUrls($entry);
         $this->pluginUrl = \PluginEngine::getURL($this->plugin, [], '', true);
-        $this->lang      = (string) ($GLOBALS['_language'] ?? 'de_DE');
+        $this->lang      = (string) ($_SESSION['_language'] ?? $GLOBALS['_language'] ?? 'de_DE');
         $this->csrf      = \CSRFProtection::token();
         $this->collection = [
             'id'   => '',
