@@ -25,6 +25,7 @@ declare(strict_types=1);
 
 <div
     id="quorum-workplace-app"
+    class="<?= !empty($highContrast) ? 'theme-high-contrast' : '' ?>"
     data-plugin-url="<?= htmlspecialchars(rtrim($pluginUrl, '/'), ENT_QUOTES) ?>"
     data-lang="<?= htmlspecialchars($lang, ENT_QUOTES) ?>"
     data-mode="compare"

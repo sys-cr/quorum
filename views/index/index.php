@@ -31,6 +31,7 @@ declare(strict_types=1);
 
 <div
     id="quorum-course-app"
+    class="<?= !empty($highContrast) ? 'theme-high-contrast' : '' ?>"
     data-cid="<?= htmlspecialchars($cid, ENT_QUOTES) ?>"
     data-lang="<?= htmlspecialchars($lang, ENT_QUOTES) ?>"
     data-role="<?= htmlspecialchars($role ?? 'tutor', ENT_QUOTES) ?>"

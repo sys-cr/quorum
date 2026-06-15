@@ -77,6 +77,10 @@ class IndexController extends PluginController
         // plugin controller context `$GLOBALS['_language']` is often NOT set →
         // fallback only. Passed to STUDIP.LANGUAGE_BASE / data-lang.
         $this->lang = (string) ($_SESSION['_language'] ?? $GLOBALS['_language'] ?? 'de_DE');
+        // High contrast (Stud.IP theme swap, no DOM class) detected server-side
+        // and passed to the mount as `theme-high-contrast`.
+        $this->highContrast = !empty($_SESSION['contrast'])
+            || (isset($GLOBALS['user']->id) && (bool) \UserConfig::get($GLOBALS['user']->id)->USER_HIGH_CONTRAST);
 
         // The role controls which component the course-app mounts (teachers:
         // management; students: read-only participation/result view).

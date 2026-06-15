@@ -905,6 +905,12 @@ class WorkplaceController extends PluginController
         $this->assetBaseUrl = $this->plugin->getPluginURL();
         $this->pluginUrl    = \PluginEngine::getURL($this->plugin, [], '', true);
         $this->lang         = (string) ($_SESSION['_language'] ?? $GLOBALS['_language'] ?? 'de_DE');
+        // High contrast: Stud.IP applies HC as a theme swap (no DOM class), so
+        // detect it server-side (same condition as SeminarOpenMiddleware) and
+        // pass `theme-high-contrast` to the mount — Quorum's HC tokens (black on
+        // white) then cascade onto the cards.
+        $this->highContrast = !empty($_SESSION['contrast'])
+            || (isset($GLOBALS['user']->id) && (bool) \UserConfig::get($GLOBALS['user']->id)->USER_HIGH_CONTRAST);
 
         // Push CSS bundles into `<head>` — a `<link>` in `<body>` would load
         // Stud.IP default styles AFTER the Quorum tokens and override our Aurora
