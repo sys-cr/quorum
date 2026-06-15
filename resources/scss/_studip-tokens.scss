@@ -50,6 +50,7 @@
     --quorum-brand-light:   #36598f;
     --quorum-brand-lighter: #899ab9;
     --quorum-brown:         #a85d45;
+    --quorum-slate:         #5b6679;   /* Collection accent (neutral container, not a question type) */
 
     /* ============================================================
        Status reserves — semantic, never decorative.
@@ -140,6 +141,7 @@
 .acc-brand       { --quorum-acc: var(--quorum-brand); }
 .acc-dark-violet { --quorum-acc: var(--quorum-dark-violet); }
 .acc-brown       { --quorum-acc: var(--quorum-brown); }
+.acc-slate       { --quorum-acc: var(--quorum-slate); }
 
 /* ================================================================
    Dark mode — keep the soft look, only lighter palette counterparts
@@ -162,6 +164,7 @@
     --quorum-brand-light:     #6e94d0;
     --quorum-brand-lighter:   #5d6e8b;
     --quorum-brown:           #c8856e;
+    --quorum-slate:           #95a0b3;
 
     --quorum-success:         #4eb95c;
     --quorum-info:            #ffd666;
@@ -200,6 +203,7 @@
         --quorum-brand-light:     #6e94d0;
         --quorum-brand-lighter:   #5d6e8b;
         --quorum-brown:           #c8856e;
+        --quorum-slate:           #95a0b3;
 
         --quorum-success:         #4eb95c;
         --quorum-info:            #ffd666;
@@ -241,6 +245,7 @@
     --quorum-brand-light:     #000;
     --quorum-brand-lighter:   #000;
     --quorum-brown:           #000;
+    --quorum-slate:           #000;
 
     /* Status: no color code — icon + text carry the meaning */
     --quorum-success:         #000;
@@ -284,6 +289,7 @@
         --quorum-brand-light:     #000;
         --quorum-brand-lighter:   #000;
         --quorum-brown:           #000;
+        --quorum-slate:           #000;
 
         --quorum-success:         #000;
         --quorum-info:            #000;
@@ -327,6 +333,7 @@
         --quorum-brand-light:     LinkText;
         --quorum-brand-lighter:   GrayText;
         --quorum-brown:           GrayText;
+        --quorum-slate:           GrayText;
 
         --quorum-success:         Mark;
         --quorum-info:            Mark;

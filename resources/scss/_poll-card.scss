@@ -41,10 +41,11 @@
     &:focus-visible { outline: 2px solid var(--quorum-acc); outline-offset: 2px; }
 }
 .quorum--workplace-card-footer { position: relative; z-index: 2; }
-/* Desaturate paused and archived cards — a status cue without an aurora shout */
+/* Paused and archived cards: flat and shadowless as a calm status cue. The
+   accent (question-type or collection colour) stays — it encodes the TYPE, not
+   the status; the status sits in the "PAUSED"/"ARCHIVED" label. */
 .quorum--workplace-card.is-paused,
 .quorum--workplace-card.is-archived {
-    --quorum-acc: var(--quorum-muted);
     background: var(--quorum-bg);
     box-shadow: none;
 }

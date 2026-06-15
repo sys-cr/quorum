@@ -28,10 +28,10 @@
 
         <ul v-else class="quorum--cards quorum--surveys">
             <li
-                v-for="(poll, index) in store.polls"
+                v-for="poll in store.polls"
                 :key="poll.id"
                 class="quorum--workplace-card"
-                :class="[`is-${stateOf(poll)}`, accentClass(index)]"
+                :class="[`is-${stateOf(poll)}`, pollTypeAccentClass(poll.type)]"
             >
                 <div class="quorum--workplace-card-head">
                     <span class="quorum--workplace-head-tags">
@@ -105,6 +105,7 @@ import QuorumDialog from '@/components/QuorumDialog.vue'
 import QuorumActionMenu from '@/components/QuorumActionMenu.vue'
 import QrCodeDialog from '@/components/QrCodeDialog.vue'
 import { pollTypeLabel } from '@/pollTypeLabel.js'
+import { pollTypeAccentClass } from '@/pollTypeAccent.js'
 
 // Definition download (question+type+options as JSON) — browser download via
 // Content-Disposition; the exported file can be re-imported via survey import.
@@ -153,10 +154,6 @@ const navigate = (path) => {
     const base = pluginUrl.endsWith('/') ? pluginUrl : `${pluginUrl}/`
     window.location.href = `${base}${path}`
 }
-
-// Collection accent rotates cyclically through the avatar palette.
-const ACCENTS = ['acc-petrol', 'acc-green', 'acc-magenta', 'acc-brand', 'acc-dark-violet']
-const accentClass = (i) => ACCENTS[i % ACCENTS.length]
 
 // cid from the mount `<div>` — passed as a query param to the workplace forms
 // so their controller activates the COURSE frame (header/tabs/sidebar) instead

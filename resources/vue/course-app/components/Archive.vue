@@ -6,10 +6,10 @@
 
         <ul v-if="rows.length > 0" class="quorum--cards quorum--archive-votings">
             <li
-                v-for="(row, index) in rows"
+                v-for="row in rows"
                 :key="row.id"
                 class="quorum--card quorum--archive-card"
-                :class="accentClass(index)"
+                :class="pollTypeAccentClass(row.type)"
             >
                 <header class="quorum--card-header">
                     <a
@@ -50,6 +50,7 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useVotingStore } from '../stores/useVotingStore.js'
 import { pollTypeLabel } from '@/pollTypeLabel.js'
+import { pollTypeAccentClass } from '@/pollTypeAccent.js'
 
 const { t, locale } = useI18n()
 const typeLabel     = (type) => pollTypeLabel(t, type)
@@ -89,9 +90,6 @@ const formatDate = (mkdate) => {
         hour: '2-digit', minute: '2-digit',
     }).format(d)
 }
-
-const ACCENTS = ['acc-petrol', 'acc-green', 'acc-magenta', 'acc-brand', 'acc-dark-violet']
-const accentClass = (i) => ACCENTS[i % ACCENTS.length]
 </script>
 
 <style scoped lang="scss">

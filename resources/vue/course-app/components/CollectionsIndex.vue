@@ -19,11 +19,11 @@
 
         <ul v-else class="quorum--workplace-cards">
             <li
-                v-for="(col, i) in store.collections"
+                v-for="col in store.collections"
                 :key="col.id"
                 class="quorum--workplace-card"
                 :class="`is-${stateOf(col)}`"
-                :style="{ '--quorum-acc': accentFor(i) }"
+                :style="{ '--quorum-acc': COLLECTION_ACCENT_VAR }"
             >
                 <div class="quorum--workplace-card-head">
                     <span class="quorum--workplace-status" :data-status="stateOf(col)">
@@ -79,6 +79,7 @@ import { onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useCourseCollectionsStore } from '../stores/useCourseCollectionsStore.js'
 import QuorumActionMenu from '@/components/QuorumActionMenu.vue'
+import { COLLECTION_ACCENT_VAR } from '@/pollTypeAccent.js'
 
 /**
  * Collection list in the course tab (teacher view). Cards + action menu like
@@ -105,12 +106,6 @@ const deepLink  = (path) => {
     return cid ? `${url}${path.includes('?') ? '&' : '?'}cid=${encodeURIComponent(cid)}` : url
 }
 const navigate  = (path) => { if (typeof window !== 'undefined' && base) window.location.href = deepLink(path) }
-
-const ACCENTS = [
-    'var(--quorum-petrol)', 'var(--quorum-green)', 'var(--quorum-magenta)',
-    'var(--quorum-brand)', 'var(--quorum-dark-violet)',
-]
-const accentFor = (i) => ACCENTS[i % ACCENTS.length]
 
 const stateOf = (col) => ((col.active_count ?? 0) > 0 ? 'running' : 'paused')
 const statusLabel = (col) =>

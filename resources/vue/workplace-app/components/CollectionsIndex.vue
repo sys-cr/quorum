@@ -30,11 +30,11 @@
 
         <ul v-else class="quorum--workplace-cards">
             <li
-                v-for="(col, i) in store.collections"
+                v-for="col in store.collections"
                 :key="col.id"
                 class="quorum--workplace-card"
                 :class="`is-${stateOf(col)}`"
-                :style="{ '--quorum-acc': accentFor(i) }"
+                :style="{ '--quorum-acc': COLLECTION_ACCENT_VAR }"
             >
                 <div class="quorum--workplace-card-head">
                     <span class="quorum--workplace-status" :data-status="stateOf(col)">
@@ -85,6 +85,7 @@ import { onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useCollectionsStore } from '../stores/useCollectionsStore.js'
 import QuorumActionMenu from '@/components/QuorumActionMenu.vue'
+import { COLLECTION_ACCENT_VAR } from '@/pollTypeAccent.js'
 
 /**
  * Collection list as Vue cards with an action menu.
@@ -120,15 +121,6 @@ onMounted(() => {
 })
 
 const reload = () => store.fetch(pluginUrl)
-
-const ACCENTS = [
-    'var(--quorum-petrol)',
-    'var(--quorum-green)',
-    'var(--quorum-magenta)',
-    'var(--quorum-brand)',
-    'var(--quorum-dark-violet)',
-]
-const accentFor = (i) => ACCENTS[i % ACCENTS.length]
 
 // Inside the course frame (cid set) all Trails links stay in the course context.
 const withCid = (url) => (cid ? `${url}?cid=${encodeURIComponent(cid)}` : url)

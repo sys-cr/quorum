@@ -118,9 +118,9 @@
       "assets/QuorumDialog-BuAegRkL.css"
     ]
   },
-  "__studip-tokens-NPinIKRW.css": {
-    "file": "assets/_studip-tokens-NPinIKRW.css",
-    "src": "__studip-tokens-NPinIKRW.css"
+  "__studip-tokens-B9oqmdDc.css": {
+    "file": "assets/_studip-tokens-B9oqmdDc.css",
+    "src": "__studip-tokens-B9oqmdDc.css"
   },
   "_gettext-Dx8c2Svn.js": {
     "file": "assets/gettext-Dx8c2Svn.js",
@@ -145,8 +145,8 @@
     "file": "assets/preload-helper-Dp1pzeXC.js",
     "name": "preload-helper"
   },
-  "_studip-components-J9pjleCE.js": {
-    "file": "assets/studip-components-J9pjleCE.js",
+  "_studip-components-mPfkDobS.js": {
+    "file": "assets/studip-components-mPfkDobS.js",
     "name": "studip-components",
     "imports": [
       "_preload-helper-Dp1pzeXC.js",
@@ -193,7 +193,7 @@
     ]
   },
   "resources/vue/course-app/main.js": {
-    "file": "assets/quorum-courseapp-DlaUa3Sc.js",
+    "file": "assets/quorum-courseapp-BtTxTLZZ.js",
     "name": "quorum-courseapp",
     "src": "resources/vue/course-app/main.js",
     "isEntry": true,
@@ -201,17 +201,17 @@
       "_i18n-BBALrs4t.js",
       "_studip-gettext-4J5HhIjC.js",
       "_pluginUrl-CVL6cZkb.js",
-      "_studip-components-J9pjleCE.js",
+      "_studip-components-mPfkDobS.js",
       "_QuorumDialog-CTOqjk-D.js",
       "_QrCodeDialog-9D_XVgvA.js",
       "_preload-helper-Dp1pzeXC.js"
     ],
     "css": [
-      "assets/quorum-courseapp-CE4KmaTb.css"
+      "assets/quorum-courseapp-CA4ktJpP.css"
     ]
   },
   "resources/vue/polls-app/main.js": {
-    "file": "assets/quorum-pollsview-BCFrLBr3.js",
+    "file": "assets/quorum-pollsview-ivhRfX2h.js",
     "name": "quorum-pollsview",
     "src": "resources/vue/polls-app/main.js",
     "isEntry": true,
@@ -222,11 +222,11 @@
       "_QuizLeaderboard-tlKwUEC6.js"
     ],
     "css": [
-      "assets/quorum-pollsview-DREbgXFS.css"
+      "assets/quorum-pollsview-BGapfXa0.css"
     ]
   },
   "resources/vue/presenter-app/main.js": {
-    "file": "assets/quorum-presenter-tMSRbFcr.js",
+    "file": "assets/quorum-presenter-DEt7efoN.js",
     "name": "quorum-presenter",
     "src": "resources/vue/presenter-app/main.js",
     "isEntry": true,
@@ -242,11 +242,11 @@
     ],
     "css": [
       "assets/quorum-presenter-BK8jyDoY.css",
-      "assets/_studip-tokens-NPinIKRW.css"
+      "assets/_studip-tokens-B9oqmdDc.css"
     ]
   },
   "resources/vue/workplace-app/main.js": {
-    "file": "assets/quorum-workplace-By7IN4GI.js",
+    "file": "assets/quorum-workplace-BWEggz1Z.js",
     "name": "quorum-workplace",
     "src": "resources/vue/workplace-app/main.js",
     "isEntry": true,
@@ -255,15 +255,15 @@
       "_studip-gettext-4J5HhIjC.js",
       "_QuorumDialog-CTOqjk-D.js",
       "_QrCodeDialog-9D_XVgvA.js",
-      "_studip-components-J9pjleCE.js",
+      "_studip-components-mPfkDobS.js",
       "_preload-helper-Dp1pzeXC.js"
     ],
     "dynamicImports": [
       "resources/vue/course-app/components/results/ResultsContainer.vue"
     ],
     "css": [
-      "assets/quorum-workplace-OfvoJ9M-.css",
-      "assets/_studip-tokens-NPinIKRW.css"
+      "assets/quorum-workplace-D8f7xuFj.css",
+      "assets/_studip-tokens-B9oqmdDc.css"
     ]
   }
 }

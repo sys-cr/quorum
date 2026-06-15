@@ -43,11 +43,11 @@
 
         <ul v-else class="quorum--workplace-cards">
             <li
-                v-for="(poll, i) in store.polls"
+                v-for="poll in store.polls"
                 :key="poll.id"
                 class="quorum--workplace-card"
                 :class="`is-${stateOf(poll)}`"
-                :style="{ '--quorum-acc': accentFor(i) }"
+                :style="{ '--quorum-acc': pollTypeAccentVar(poll.type) }"
             >
                 <div class="quorum--workplace-card-head">
                     <span class="quorum--workplace-head-tags">
@@ -130,6 +130,7 @@
                         v-for="col in colStore.collections"
                         :key="col.id"
                         class="quorum--workplace-card is-archived"
+                        :style="{ '--quorum-acc': COLLECTION_ACCENT_VAR }"
                     >
                         <div class="quorum--workplace-card-head">
                             <span class="quorum--workplace-status" data-status="archived">
@@ -213,6 +214,7 @@ import QuorumDialog from '@/components/QuorumDialog.vue'
 import QrCodeDialog from '@/components/QrCodeDialog.vue'
 import QuorumActionMenu from '@/components/QuorumActionMenu.vue'
 import { pollTypeLabel } from '@/pollTypeLabel.js'
+import { pollTypeAccentVar, COLLECTION_ACCENT_VAR } from '@/pollTypeAccent.js'
 
 /**
  * Workplace full page — list of own polls with lifecycle actions.
@@ -298,15 +300,6 @@ const performCollectionConfirm = async () => {
         await colStore.deleteCollection(pluginUrl, col.id)
     } catch { /* see above */ }
 }
-
-const ACCENTS = [
-    'var(--quorum-petrol)',
-    'var(--quorum-green)',
-    'var(--quorum-magenta)',
-    'var(--quorum-brand)',
-    'var(--quorum-dark-violet)',
-]
-const accentFor = (i) => ACCENTS[i % ACCENTS.length]
 
 const seminarLinkFor = (poll) => `${pluginUrl}/index/index?cid=${encodeURIComponent(poll.seminar_id)}`
 
