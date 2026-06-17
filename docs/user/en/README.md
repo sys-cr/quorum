@@ -32,9 +32,9 @@ The complete manual lives in **one** file with a table of contents: **[manual.md
 
 - **Anonymous, no login:** students do not need a Stud.IP account — just a device with a camera. Duplicate-vote protection is stored purely in the browser; there is no IP tracking.
 - **Live sync:** one scan is enough — the participant page waits for the start and, with collections, automatically follows to the next question.
-- **Mobile and accessible:** everything works from 375 px screen width, with keyboard and screen reader, in dark and high-contrast mode.
-- **Several question types:** single choice, multiple choice, scale/Likert, emoji, free text, matrix — optionally with a time limit and countdown.
-- **Quiz mode:** points for correct (and fast) answers, a pseudonymous leaderboard with strictly voluntary participation.
+- **Mobile and accessible:** everything works from 375 px screen width, with keyboard and screen reader, in **Stud.IP's high-contrast mode** (the OS dark mode is deliberately not adopted).
+- **Several question types:** single choice, multiple choice, scale (numeric 1–6 or named Likert steps), emoji, free text, matrix — with **templates** for scale and emoji, dynamic options (2–20) and an optional time limit.
+- **Quiz & correct marking:** optionally mark the correct answer(s) for single/multiple choice (highlighted in the results); a scored quiz with points and a voluntary leaderboard for single choice.
 - **Peer instruction:** ask the same question in two rounds and compare them with a delta table.
 - **Results and export:** a results page per poll, CSV and PDF export, re-importable JSON definition; two-stage free-text moderation.
 - **Demo content:** the help bar on the workplace page can load a sample collection with sample answers.

@@ -94,7 +94,7 @@ For course-bound polls, the workplace overview links directly to the "Quorum" ta
 
 **Roles:** Inside a course, the "Quorum" tab requires at least **tutor rights**. The workplace tile and course-independent management appear from the configured **minimum role** (default: **lecturer**) — see [Configuration](#konfiguration). If the tile is missing, your role probably does not meet that minimum; ask your Stud.IP administration.
 
-Both surfaces run inside the normal Stud.IP frame, work on any device from 375 pixels wide (tables stack into cards on a phone), and are fully keyboard- and screen-reader-operable. Dark mode and high-contrast mode are picked up from your operating system automatically; status is never conveyed by colour alone.
+Both surfaces run inside the normal Stud.IP frame, work on any device from 375 pixels wide (tables stack into cards on a phone), follow Stud.IP's **language** and **high-contrast mode** (Profile → Settings → Accessibility), and are fully keyboard- and screen-reader-operable. Quorum deliberately does **not** follow the OS dark mode — it stays light like the Stud.IP frame instead of going dark on its own. The anonymous vote page additionally responds to the system settings `prefers-contrast` and `forced-colors`. Status is never conveyed by colour alone. The coloured card accent encodes the **question type** (single choice, multiple choice, scale, emoji, free text); collections carry their own neutral accent.
 
 <a id="anlegen"></a>
 ## Creating polls
@@ -102,9 +102,9 @@ Both surfaces run inside the normal Stud.IP frame, work on any device from 375 p
 1. Click **Create poll**.
 2. Enter the **question** (plain text; line breaks are preserved).
 3. Choose the **question type** — see [Question types](#fragetypen). (The matrix type is available via the course tab.)
-4. For choice-based types: enter at least **two answer options**.
+4. Depending on the type: for **single/multiple choice** at least **two options** (add more via **"+ Add option"**, up to 20); for **Scale** numeric or named steps; for **Emoji** pick a set via **"Template"** (all editable — see [Question types](#fragetypen)).
 5. Optional: set a **time limit in minutes**. Participants see a countdown and the poll stops automatically when time runs out.
-6. Optional (single choice only): tick **"Correct answer (quiz)"** on the correct option and enable **"Activate quiz mode"** — see [Quiz mode](#quiz).
+6. Optional (single/multiple choice): mark the **correct answer(s)** — they are highlighted in the results. For a scored **quiz with leaderboard** also enable **"Quiz mode"** (single choice only; see [Quiz mode](#quiz)).
 7. Optional: bind the poll to a **course**. Leave the field empty and it stays course-independent (and can be bound later via **Edit**).
 8. **Save.** The poll appears in the overview as a not-yet-running template.
 
@@ -115,14 +115,35 @@ A missing question or fewer than two options is rejected server-side; you get th
 
 | Type | What for |
 |---|---|
-| **Single choice** | one correct or preferred answer out of several options |
+| **Single choice** | exactly one answer out of several options |
 | **Multiple choice** | several answers selectable at once |
-| **Scale / Likert** | agreement or assessment on a scale (e.g. 1–5) |
-| **Emoji mood** | a quick mood check via emojis |
+| **Scale (Likert)** | assessment on a scale — numeric or with named steps |
+| **Emoji reaction** | a quick mood check via emojis |
 | **Free text** | open answers in the participants' own words (anonymous) |
-| **Matrix** | rate several statements together on one scale |
+| **Matrix** | rate several statements together on one scale (created via the course tab only) |
 
-All texts (question and options) are plain text; line breaks are preserved. Choice-based questions need at least two options.
+All texts (question and options) are plain text; line breaks are preserved.
+
+### Answer options — dynamic (single/multiple choice, emoji)
+
+Choice questions start with **two** option fields; **"+ Add option"** adds more (up to **20**), the **✕** removes one again (at least two remain). Empty fields are ignored on save.
+
+### Scale — numeric or named steps
+
+For the **Scale** type you first pick the **scale type**:
+
+- **Numeric (1 … N):** you only set the **number of points** (2 to 6 — e.g. 6 for German school grades 1–6). Quorum generates the steps "1" … "N" automatically.
+- **Named steps:** you name the steps yourself (highest first). **"Template"** fills typical sets with one click — freely editable afterwards:
+  - **Agreement (5-/4-/3-point):** agree … disagree
+  - **Frequency (5-point):** always · often · sometimes · rarely · never
+
+### Emoji — templates and free
+
+For the **Emoji** type you fill the options via **"Template"** (mood 3-/5-point, thumbs, understanding, more reactions) and then swap the emoji freely via **copy & paste** — your own emoji are possible at any time.
+
+### Marking the correct answer (optional — single/multiple choice only)
+
+For **single choice** and **multiple choice** you can optionally mark the correct answer(s) — **"Correct answer"** per option (exactly one for single choice, several for multiple choice). After the poll ends, the results highlight the correct answer with a **✓**. Marking is **optional**; only in [quiz mode](#quiz) is at least one correct answer required. All other question types (scale, emoji, free text, matrix) have no correct-answer marking.
 
 <a id="durchfuehren"></a>
 ## Running a poll
@@ -245,6 +266,8 @@ Every poll card — including in the **archive** — carries the **"Results …"
 | Free text | list of the individual (anonymous) answers |
 | Matrix | table with the distribution per row |
 
+If you marked correct answers on a **single-** or **multiple-choice** question, the results mark them with a **✓** — regardless of quiz mode.
+
 ### Downloads
 
 | Download | Content | Where |
@@ -273,10 +296,12 @@ Students see the results of finished polls in the course's **Quorum tab** — th
 
 Quiz mode turns a single-choice question into a small competitive quiz: correct answers earn points, fast answers earn more, and anyone who wants to can appear on the leaderboard under a self-chosen nickname.
 
+> **Correct marking ≠ quiz:** you can mark the correct answer for **single *and* multiple choice** without a quiz, too — the **results** then simply highlight it with a ✓ (no leaderboard, no points). The **scored quiz** with leaderboard, however, is intended for **single choice**.
+
 ### Setting up a quiz
 
 1. Create a **single-choice question** (workplace or course tab).
-2. Tick **"Correct answer (quiz)"** on the correct option.
+2. Mark the correct option with **"Correct answer"**.
 3. Enable the **"Activate quiz mode"** checkbox.
 4. Optional: set a **time limit in minutes** — only then does answer speed factor into the points.
 5. Save and start the voting as usual.
@@ -349,7 +374,7 @@ These options are set by the Stud.IP administration under **Configuration → Sy
 
 **What is the difference between the CSV export and "Download definition"?** — The CSV export contains the **answers** (aggregated or anonymous texts). The JSON definition contains only the **question with its options** and can be imported again.
 
-**Can I mark several options as correct in a quiz?** — Quiz mode is intended for single-choice questions with one clearly correct answer; mark at least one option as correct.
+**Can I mark several options as correct?** — Yes: for **multiple choice** you mark several correct answers, and the results highlight them with ✓. The scored **quiz leaderboard**, however, is intended for **single choice** with exactly one correct answer.
 
 **Does a quiz question work without a time limit?** — Yes. Without a time limit, every correct answer earns full points regardless of speed.
 

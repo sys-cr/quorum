@@ -92,11 +92,11 @@ Quorum hat zwei Einstiege:
 - **In der Veranstaltung:** Klicken Sie im Veranstaltungs-Header den Reiter **„Quorum"**. Hier verwalten Sie die Abstimmungen dieses Kurses — ohne zusätzliche Anmeldung und ohne externe Links.
 - **Am Arbeitsplatz (kursunabhängig):** Öffnen Sie **Mein Arbeitsplatz** und klicken Sie die Kachel **Quorum** („Live-Abstimmungen anlegen und auswerten"). Dort verwalten Sie Abstimmungen, die zu **keiner** einzelnen Veranstaltung gehören müssen — etwa für eine Gastvorlesung, ein kursübergreifendes Tutorium oder als wiederverwendbare Vorlagen.
 
-In der Übersicht erscheint jede Abstimmung als Karte mit Frage, **Status-Abzeichen** („läuft" / „beendet", zusätzlich mit Text und Icon, also auch ohne Farbsehen erkennbar), **Stimmenzahl** und entweder dem **Veranstaltungs-Namen** oder dem Marker **„kursunabhängig"**.
+In der Übersicht erscheint jede Abstimmung als Karte mit Frage, **Status-Abzeichen** („läuft" / „beendet", zusätzlich mit Text und Icon, also auch ohne Farbsehen erkennbar), **Stimmenzahl** und entweder dem **Veranstaltungs-Namen** oder dem Marker **„kursunabhängig"**. Die ganze Kachel ist anklickbar und öffnet die Detail-/Ergebnisansicht. Der **farbige Akzent** der Karte kodiert den **Fragetyp** (Single Choice, Mehrfachauswahl, Skala, Emoji, Freitext) — der Typ ist so auf einen Blick erkennbar; Sammlungen tragen einen eigenen neutralen Akzent.
 
 **Rollen:** Im Veranstaltungskontext gilt das normale Stud.IP-Rechtemodell — der „Quorum"-Reiter erfordert mindestens **Tutor-Rechte** in der jeweiligen Veranstaltung. Die Arbeitsplatz-Kachel ist erst ab einer von der Administration konfigurierten **Mindestrolle** sichtbar (Standard: **Dozent:in**). Erscheint die Kachel nicht, erreicht Ihre Rolle vermutlich nicht diese Mindestrolle — siehe [Konfiguration](#konfiguration).
 
-Beide Oberflächen funktionieren auf jedem Gerät ab 375 Pixel Breite (am Smartphone werden Tabellen zu gestapelten Karten), übernehmen **Dark Mode** und **High-Contrast-Mode** des Betriebssystems und sind vollständig per Tastatur und Screenreader bedienbar.
+Beide Oberflächen funktionieren auf jedem Gerät ab 375 Pixel Breite (am Smartphone werden Tabellen zu gestapelten Karten), folgen der **Sprache** und dem **Hochkontrast-Modus von Stud.IP** (Profil → Einstellungen → Barrierefreiheit) und sind vollständig per Tastatur und Screenreader bedienbar. Den OS-Dark-Mode übernimmt Quorum **bewusst nicht** — die Oberfläche bleibt hell wie der Stud.IP-Rahmen, statt eigenständig dunkel zu werden. Die anonyme Vote-Seite reagiert zusätzlich auf die System-Einstellungen `prefers-contrast` und `forced-colors`.
 
 <a id="anlegen"></a>
 ## Abstimmungen anlegen
@@ -104,9 +104,9 @@ Beide Oberflächen funktionieren auf jedem Gerät ab 375 Pixel Breite (am Smartp
 1. Klicken Sie **Abstimmung anlegen**.
 2. Tragen Sie die **Frage** ein (reiner Text; Zeilenumbrüche bleiben erhalten).
 3. Wählen Sie den **Fragetyp** (siehe [Fragetypen](#fragetypen)).
-4. Bei auswahlbasierten Fragetypen: tragen Sie mindestens **zwei Antwortoptionen** ein.
+4. Je nach Fragetyp: bei **Single/Multiple Choice** mindestens **zwei Optionen** (weitere über **„+ Weitere Option"**, bis zu 20); bei **Skala** numerisch oder benannte Stufen; bei **Emoji** ein Set über **„Vorlage"** wählen (alles editierbar — siehe [Fragetypen](#fragetypen)).
 5. Optional: setzen Sie ein **Zeitlimit in Minuten** — Teilnehmende sehen dann einen Countdown, und die Abstimmung stoppt automatisch, wenn die Zeit abläuft.
-6. Optional (nur Single Choice): kreuzen Sie bei der korrekten Option **„Richtige Antwort (Quiz)"** an und aktivieren Sie **„Quiz-Modus aktivieren"** (siehe [Quiz-Modus](#quiz)).
+6. Optional (Single/Multiple Choice): markieren Sie die **richtige(n) Antwort(en)** — sie werden im Ergebnis hervorgehoben. Für ein gewertetes **Quiz mit Leaderboard** aktivieren Sie zusätzlich **„Quiz-Modus"** (nur Single Choice; siehe [Quiz-Modus](#quiz)).
 7. Optional: binden Sie die Abstimmung an eine **Veranstaltung**. Lassen Sie das Feld leer, bleibt sie kursunabhängig (nachträgliches Binden geht jederzeit über **Bearbeiten**).
 8. **Speichern.** Die Abstimmung erscheint in der Übersicht — zunächst nicht laufend, als Vorlage.
 
@@ -119,14 +119,35 @@ Welcher Typ passt, hängt davon ab, was Sie wissen wollen:
 
 | Typ | Wofür |
 |---|---|
-| **Single Choice** | eine richtige bzw. bevorzugte Antwort aus mehreren Optionen |
-| **Mehrfachauswahl** | mehrere Antworten gleichzeitig wählbar |
-| **Skala / Likert** | Zustimmung oder Einschätzung auf einer Skala (z. B. 1–5) |
-| **Emoji-Stimmung** | schnelles Stimmungsbild über Emojis |
+| **Single Choice** | genau eine Antwort aus mehreren Optionen |
+| **Multiple Choice** (Mehrfachauswahl) | mehrere Antworten gleichzeitig wählbar |
+| **Skala (Likert)** | Einschätzung auf einer Skala — numerisch oder mit benannten Stufen |
+| **Emoji-Reaktion** | schnelles Stimmungsbild über Emojis |
 | **Freitext** | offene Antworten in eigenen Worten (anonym) |
-| **Matrix** | mehrere Aussagen gemeinsam auf einer Skala bewerten |
+| **Matrix** | mehrere Aussagen gemeinsam auf einer Skala bewerten (nur über den Kurs-Reiter anlegbar) |
 
-Alle Texte (Frage und Optionen) sind reiner Text; Zeilenumbrüche bleiben erhalten. Auswahlbasierte Fragen brauchen mindestens zwei Optionen.
+Alle Texte (Frage und Optionen) sind reiner Text; Zeilenumbrüche bleiben erhalten.
+
+### Antwortoptionen — dynamisch (Single/Multiple Choice, Emoji)
+
+Bei Auswahlfragen starten **zwei** Optionsfelder; über **„+ Weitere Option"** fügen Sie weitere hinzu (bis zu **20**), das **✕** entfernt eines wieder (mindestens zwei bleiben). Leere Felder werden beim Speichern ignoriert.
+
+### Skala — numerisch oder benannte Stufen
+
+Beim Typ **Skala** wählen Sie zuerst den **Skalentyp**:
+
+- **Numerisch (1 … N):** Sie legen nur die **Anzahl der Punkte** fest (2 bis 6 — z. B. 6 für die Schulnoten 1–6). Quorum erzeugt die Stufen „1" … „N" automatisch.
+- **Benannte Stufen:** Sie benennen die Stufen selbst (höchste zuerst). Über **„Vorlage"** füllen Sie typische Sets mit einem Klick — danach beliebig editierbar:
+  - **Zustimmung (5-/4-/3-stufig):** trifft zu … trifft nicht zu
+  - **Häufigkeit (5-stufig):** immer · oft · manchmal · selten · nie
+
+### Emoji — Vorlagen und frei
+
+Beim Typ **Emoji** füllen Sie die Optionen über **„Vorlage"** (Stimmung 3-/5-stufig, Daumen, Verständnis, Weitere Reaktionen) und tauschen die Emoji danach beliebig per **Copy & Paste** aus — eigene Emoji sind jederzeit möglich.
+
+### Richtige Antwort markieren (optional — nur Single/Multiple Choice)
+
+Bei **Single Choice** und **Multiple Choice** können Sie optional die richtige(n) Antwort(en) markieren — **„Richtige Antwort"** je Option (bei Single Choice genau eine, bei Multiple Choice mehrere). Nach dem Ende der Abstimmung hebt das Ergebnis die richtige Antwort mit einem **✓** hervor. Das Markieren ist **freiwillig**; nur im [Quiz-Modus](#quiz) ist mindestens eine richtige Antwort erforderlich. Bei allen anderen Fragetypen (Skala, Emoji, Freitext, Matrix) gibt es keine Richtig-Markierung.
 
 <a id="durchfuehren"></a>
 ## Eine Abstimmung durchführen
@@ -238,6 +259,8 @@ Jede Umfrage-Karte — auch im **Archiv** — trägt die Aktion **„Ergebnisse 
 | Freitext | Liste der einzelnen (anonymen) Antworten |
 | Matrix | Tabelle mit der Verteilung je Zeile |
 
+Haben Sie bei einer **Single-** oder **Multiple-Choice**-Frage richtige Antworten markiert, kennzeichnet das Ergebnis sie mit einem **✓** — unabhängig vom Quiz-Modus.
+
 **Downloads:**
 
 | Download | Inhalt | Wo |
@@ -264,10 +287,12 @@ Studierende sehen die Ergebnisse beendeter Abstimmungen im **Quorum-Reiter** der
 
 Der Quiz-Modus macht aus einer Single-Choice-Frage ein kleines Wettbewerbs-Quiz: richtige Antworten bringen Punkte, schnelle Antworten mehr Punkte, und wer mag, erscheint mit einem selbst gewählten Spitznamen auf dem Leaderboard.
 
+> **Richtig-Markierung ≠ Quiz:** Die richtige Antwort lässt sich bei **Single *und* Multiple Choice** auch ganz ohne Quiz markieren — dann hebt nur das **Ergebnis** sie mit einem ✓ hervor (kein Leaderboard, keine Punkte). Das **gewertete Quiz** mit Leaderboard ist hingegen für **Single Choice** gedacht.
+
 **Anlegen:**
 
 1. Legen Sie eine **Single-Choice-Frage** an (Arbeitsplatz oder Kurs-Reiter).
-2. Kreuzen Sie bei der korrekten Option **„Richtige Antwort (Quiz)"** an.
+2. Markieren Sie die korrekte Option mit **„Richtige Antwort"**.
 3. Aktivieren Sie die Checkbox **„Quiz-Modus aktivieren"**.
 4. Optional: setzen Sie ein **Zeitlimit in Minuten** — erst damit fließt die Antwortgeschwindigkeit in die Punkte ein.
 5. Speichern und das Voting wie gewohnt starten.
@@ -332,6 +357,6 @@ Einrichtungs- und CLI-Details: siehe [Installation](../../install/de/README.md) 
 
 **Was ist der Unterschied zwischen CSV-Export und „Definition herunterladen"?** — Der CSV-Export enthält die **Antworten** (aggregiert bzw. anonyme Texte). Die JSON-Definition enthält nur die **Frage samt Optionen** und lässt sich wieder importieren.
 
-**Kann ich mehrere Optionen als richtig markieren?** — Der Quiz-Modus ist für Single-Choice-Fragen mit eindeutig richtiger Antwort gedacht; markieren Sie mindestens eine Option als richtig.
+**Kann ich mehrere Optionen als richtig markieren?** — Ja: bei **Multiple Choice** markieren Sie mehrere richtige Antworten, das Ergebnis hebt sie mit ✓ hervor. Das gewertete **Quiz-Leaderboard** ist hingegen für **Single Choice** mit genau einer richtigen Antwort gedacht.
 
 **Zählt eine Quiz-Frage auch ohne Zeitlimit?** — Ja. Ohne Zeitlimit gibt es für jede richtige Antwort die volle Punktzahl, unabhängig vom Tempo.

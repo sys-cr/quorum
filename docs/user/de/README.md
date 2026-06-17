@@ -32,9 +32,9 @@ Die vollständige Anleitung steht in **einer** Datei mit Inhaltsverzeichnis: **[
 
 - **Anonym & ohne Login:** Studierende brauchen kein Stud.IP-Konto, nur ein Gerät mit Kamera. Ein Doppel-Abstimmungs-Schutz wird rein im Browser gespeichert — kein IP-Tracking.
 - **Live-Sync:** ein Scan genügt — die Teilnehmer-Seite wartet auf den Start und folgt bei Sammlungen automatisch zur nächsten Frage.
-- **Mobil & barrierefrei:** alles funktioniert ab 375 px Bildschirmbreite, per Tastatur und Screenreader, in Dark- und High-Contrast-Mode.
-- **Mehrere Fragetypen:** Single Choice, Mehrfachauswahl, Skala/Likert, Emoji, Freitext, Matrix — optional mit Zeitlimit und Countdown.
-- **Quiz-Modus:** Punkte für richtige (und schnelle) Antworten, pseudonymes Leaderboard mit freiwilliger Teilnahme.
+- **Mobil & barrierefrei:** alles funktioniert ab 375 px Bildschirmbreite, per Tastatur und Screenreader, im **High-Contrast-Mode von Stud.IP** (der OS-Dark-Mode wird bewusst nicht übernommen).
+- **Mehrere Fragetypen:** Single Choice, Multiple Choice, Skala (numerisch 1–6 oder benannte Likert-Stufen), Emoji, Freitext, Matrix — mit **Vorlagen** für Skala und Emoji, dynamischen Optionen (2–20) und optionalem Zeitlimit.
+- **Quiz & Richtig-Markierung:** richtige Antwort(en) optional bei Single/Multiple Choice markieren (Ergebnis-Hervorhebung); gewertetes Quiz mit Punkten und freiwilligem Leaderboard für Single Choice.
 - **Peer Instruction:** dieselbe Frage in zwei Runden stellen und mit Delta-Tabelle vergleichen.
 - **Ergebnisse & Export:** Ergebnisseite je Umfrage, CSV- und PDF-Export, re-importierbare JSON-Definition; Freitext-Moderation in zwei Stufen.
 - **Demo-Inhalte:** über die Hilfeleiste am Arbeitsplatz lässt sich eine Beispiel-Sammlung mit Beispiel-Antworten laden.
